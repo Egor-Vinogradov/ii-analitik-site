@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ИИ-аналитик для 1С</title>
+<meta name="description" content="Telegram-бот для руководителя: вопросы обычным языком, ответы цифрами из 1С:Бухгалтерии для Беларуси и короткие выводы.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;600&amp;display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg aria-hidden="true" width="30" height="30" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#1D2C4D"/><rect x="7" y="17" width="4" height="8" rx="1" fill="#E8A33D"/><rect x="14" y="12" width="4" height="13" rx="1" fill="#E8A33D"/><rect x="21" y="7" width="4" height="18" rx="1" fill="#F6F5F0"/></svg>
+      ИИ-аналитик для 1С
+    </a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#questions">Возможности</a>
+      <a href="#together">Пилот</a>
+      <a href="investors.html">Инвесторам</a>
+      <a class="btn btn-amber" href="https://t.me/egorka_vin" target="_blank" rel="noopener">Написать в Telegram</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="band-ink">
+    <div class="wrap hero">
+      <div>
+        <p class="pilot"><b>Пилот с ноября 2026</b> 1С:Бухгалтерия для Беларуси, редакция 2.1</p>
+        <h1>ИИ-аналитик для 1С: цифры бизнеса в Telegram по первому вопросу</h1>
+        <p class="lead muted">Руководитель спрашивает обычным языком — «сколько денег?», «кто нам должен?», «какая прибыль за сентябрь?» — и получает цифры из своей 1С с короткими выводами. Сейчас ведём разработку и набираем пилотные компании — запуск пилота ориентировочно в ноябре 2026.</p>
+        <div class="actions">
+          <a class="btn btn-amber" href="#join">Как присоединиться</a>
+          <a class="btn btn-ghost" href="#how">Как это работает</a>
+        </div>
+      </div>
+      <div class="chat" aria-label="Пример переписки с ботом на демо-данных">
+        <p class="head"><strong>ИИ-аналитик</strong> · бот в Telegram</p>
+        <p class="msg q">Кто нам должен больше всего?</p>
+        <p class="msg a">Покупатели должны <span class="num">184 300 BYN</span>.<br>Три крупнейших — <span class="num">61%</span> долга.<br>Больше всех — «Пример-1»: <span class="num">52 100 BYN</span>.</p>
+        <p class="msg q">А что с деньгами?</p>
+        <p class="msg a">На счетах и в кассе <span class="num">96 750 BYN</span>, из них <span class="num">8 200 USD</span> на валютном счёте.<br>Задолженность перед бюджетом — <span class="num">21 400 BYN</span>.</p>
+        <p class="note">Пример на демо-данных</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="join" class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Как присоединиться</p>
+      <h2>Два формата участия</h2>
+      <p class="muted">Выберите, что ближе вам. В любом случае можно просто написать в Telegram — разберёмся вместе.</p>
+    </div>
+    <div class="grid-2">
+      <div class="tile">
+        <p class="tag now">Компаниям на 1С</p>
+        <h3>Пилот на вашей базе</h3>
+        <p class="muted">Для компаний на 1С:Бухгалтерии для Беларуси редакции 2.1 — совместимость базы проверяем заранее. Запуск ориентировочно в ноябре 2026. От вас — пользоваться ботом в работе и давать обратную связь.</p>
+        <div class="actions" style="margin-top: auto; padding-top: 8px"><a class="btn btn-ink" href="#together">Стать пилотной компанией</a></div>
+      </div>
+      <div class="tile">
+        <p class="tag next">Инвесторам</p>
+        <h3>Инвестиции и стратегическое партнёрство</h3>
+        <p class="muted">Продукт, рынок, бизнес-модель и план. Открыты к разговору с частными инвесторами и компаниями из любой отрасли.</p>
+        <div class="actions" style="margin-top: auto; padding-top: 8px"><a class="btn btn-ink" href="investors.html">Для инвесторов</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="questions" class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Что делаем</p>
+      <h2>Вопросы владельца — ответы из учёта</h2>
+      <p class="muted">Бот берёт цифры из вашей 1С в момент вопроса. Не нужно ждать отчёта от бухгалтера или разбираться в оборотно-сальдовой ведомости.</p>
+    </div>
+    <div class="qa">
+      <div><p class="q">«Сколько денег?»</p><p class="muted">Касса и каждый расчётный счёт, валютные — в валюте и BYN</p></div>
+      <div><p class="q">«Какая выручка и прибыль?»</p><p class="muted">Выручка, себестоимость, валовая и чистая прибыль по месяцам</p></div>
+      <div><p class="q">«Кто нам должен?»</p><p class="muted">Покупатели и подотчётные лица, крупнейшие должники</p></div>
+      <div><p class="q">«Кому мы должны?»</p><p class="muted">Поставщики, налоги, ФСЗН, зарплата</p></div>
+      <div><p class="q">«Кто главные покупатели?»</p><p class="muted">Рейтинг по выручке и доля каждого</p></div>
+      <div><p class="q">«На что уходят деньги?»</p><p class="muted">Расходы по статьям затрат</p></div>
+      <div><p class="q">«Что на складе?»</p><p class="muted">Остатки товаров и материалов, крупные позиции</p></div>
+      <div><p class="q">«Что с учётом?»</p><p class="muted">Закрыт ли месяц, свежие ли выписки, нет ли непроведённых документов</p></div>
+      <div><p class="q">«Дай анализ за квартал»</p><p class="muted">Несколько отчётов и выводы в одном ответе</p></div>
+    </div>
+    <div class="tile" style="max-width: 760px">
+      <h3>Утренняя сводка</h3>
+      <p class="muted">По подписке каждое утро: деньги, выручка, крупные должники и долги перед бюджетом.</p>
+    </div>
+  </section>
+
+  <section id="how" class="band-sky">
+    <div class="wrap section">
+      <div class="section-head">
+        <p class="eyebrow">Как это работает</p>
+        <h2>ИИ понимает вопрос, цифры считает 1С</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Ставим расширение</h3><p class="muted">Типовая конфигурация не меняется, обновления устанавливаются как обычно.</p></li>
+        <li><h3>Вы пишете вопрос</h3><p class="muted">Бот отвечает только сотрудникам из списка доступа.</p></li>
+        <li><h3>ИИ выбирает отчёт</h3><p class="muted">Из готового набора. Доступа к таблицам базы у ИИ нет.</p></li>
+        <li><h3>1С считает и бот отвечает</h3><p class="muted">Цифры — средствами 1С, как в ОСВ. Выводы — коротко и по делу.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="security" class="band-ink">
+    <div class="wrap section">
+      <div class="section-head">
+        <p class="eyebrow">Безопасность</p>
+        <h2>Ваш учёт не уходит во внешний ИИ</h2>
+        <p class="muted">Внешний сервис получает только суммы и условные коды. Названия контрагентов, товаров и ФИО подставляются уже после ответа ИИ, на сервере бота.</p>
+      </div>
+      <div class="shield">
+        <div class="tile">
+          <svg class="ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+          <h3>Только чтение</h3><p>Расширение ничего не записывает и не меняет в базе.</p>
+        </div>
+        <div class="tile">
+          <svg class="ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h10M4 17h6"/><path d="M17 15l4 4M21 15l-4 4"/></svg>
+          <h3>Обезличивание</h3><p>Во внешний ИИ — суммы и коды, без названий и ФИО.</p>
+        </div>
+        <div class="tile">
+          <svg class="ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M17 11l2 2 3-4"/></svg>
+          <h3>Права по сотрудникам</h3><p>Зарплату по сотрудникам видят только владелец и главный бухгалтер. Права проверяет сама 1С.</p>
+        </div>
+        <div class="tile">
+          <svg class="ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          <h3>Без персональных данных</h3><p>Паспорта, личные номера и адреса бот не выдаёт никогда.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Какие базы подходят</p>
+      <h2>Сейчас — только 1С:Бухгалтерия для Беларуси</h2>
+      <p class="muted">Разработка и пилоты идут на одной конфигурации, чтобы довести её до надёжной работы. Остальные конфигурации — следующий этап.</p>
+    </div>
+    <div class="bases">
+      <div class="tile"><p class="tag now">Сейчас</p><h3>1С:Бухгалтерия для Беларуси, редакция 2.1</h3><p class="muted">Разработка ведётся на версии 2.1.65. Вашу базу заранее проверяет обработка «Проверка совместимости». Для этой редакции набираем пилотные компании.</p></div>
+      <div class="tile"><p class="tag check">После проверки</p><h3>Доработанные базы этой версии</h3><p class="muted">Свои счета и субконто. Проверяем базу и настраиваем соответствия счетов до подключения.</p></div>
+      <div class="tile"><p class="tag next">Перспектива</p><h3>УТ, УНФ и конфигурации для РФ</h3><p class="muted">Продажи по товарам и менеджерам, склад, маржа, затем конфигурации для России. Начнём после пилота на Бухгалтерии.</p></div>
+    </div>
+  </section>
+
+  <section id="together" class="band-sky">
+    <div class="wrap section">
+      <div class="section-head">
+        <p class="eyebrow">Формат сотрудничества</p>
+        <h2>Пилот: пробуем вместе на вашей базе</h2>
+        <p class="muted"><b>Пилот проводим на 1С:Бухгалтерии для Беларуси редакции 2.1 — совместимость вашей базы проверим заранее.</b> Запуск — ориентировочно ноябрь 2026. Нам нужны компании, которые готовы пользоваться ботом в реальной работе и делиться обратной связью. Вам — инструмент, который подстраивается под ваши задачи.</p>
+      </div>
+      <div class="grid-2">
+        <div class="tile">
+          <h3>Что получаете вы</h3>
+          <ul class="muted" style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px">
+            <li>Ответы по своей базе в Telegram с первых недель</li>
+            <li>Влияние на продукт: какие отчёты и выводы появятся первыми</li>
+            <li>Возможность продолжить работу с ботом по подписке после пилота</li>
+          </ul>
+        </div>
+        <div class="tile">
+          <h3>О чём просим мы</h3>
+          <ul class="muted" style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px">
+            <li>Пользоваться ботом в обычной работе</li>
+            <li>Обратная связь: что удобно, чего не хватает, что работает не так</li>
+            <li>Помочь сверить цифры бота с вашей ОСВ</li>
+            <li>По итогам — отзыв и обезличенный кейс, если результат вас устроит</li>
+          </ul>
+        </div>
+      </div>
+      <ol class="steps">
+        <li><h3>Знакомимся</h3><p class="muted">Обсуждаем ваши вопросы к учёту и запускаем на вашей базе обработку «Проверка совместимости».</p></li>
+        <li><h3>Подключаем</h3><p class="muted">Ставим расширение и бота, настраиваем доступ для нужных сотрудников.</p></li>
+        <li><h3>Работаем вместе</h3><p class="muted">Вы задаёте вопросы, мы дорабатываем отчёты по вашим замечаниям.</p></li>
+        <li><h3>Подводим итоги</h3><p class="muted">Считаем, сколько времени сэкономлено, и вместе решаем, продолжать ли.</p></li>
+      </ol>
+      <p class="muted">Условия пилота обсуждаем с каждой компанией индивидуально. После пилота бот может продолжить работать по подписке.</p>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Вопросы</p>
+      <h2>Что обычно спрашивают</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Видит ли ИИ мою базу?</summary><p>Нет. ИИ получает только вопрос и выбирает отчёт из готового набора. Цифры считает 1С, а во внешний сервис уходят суммы и условные коды без названий контрагентов, товаров и ФИО.</p></details>
+      <details><summary>Нужно ли менять конфигурацию 1С?</summary><p>Нет. Ставится расширение, типовая конфигурация остаётся на поддержке, обновления устанавливаются как обычно.</p></details>
+      <details><summary>У нас другая версия Бухгалтерии. Подойдёт?</summary><p>Если это 1С:Бухгалтерия для Беларуси редакции 2.1 — скорее всего, да. Разработка ведётся на версии 2.1.65, а совместимость вашей базы заранее проверяет обработка «Проверка совместимости». Редакцию 1.6 обсуждаем отдельно.</p></details>
+      <details><summary>У нас доработанная база. Подойдёт?</summary><p>Скорее всего, да. Перед подключением запускаем обработку «Проверка совместимости»: если есть свои счета или субконто, настраиваем соответствия и сверяем цифры бота с вашей ОСВ. Самописные конфигурации обсуждаем отдельно.</p></details>
+      <details><summary>Где работает бот и какой ИИ используется?</summary><p>Сервер бота может стоять у вас или у нас — выбираем вместе, исходя из ваших требований к безопасности. Языковую модель на время пилота тоже подбираем под задачу. Кто оплачивает сервер и ИИ, обсуждаем индивидуально.</p></details>
+      <details><summary>Сколько это стоит?</summary><p>Условия пилота обсуждаем индивидуально. После пилота бот может продолжить работать по подписке.</p></details>
+      <details><summary>Что если бот нам не подойдёт?</summary><p>Ничего страшного: расширение удаляется, база остаётся как была. Ваши замечания всё равно помогут нам сделать продукт лучше.</p></details>
+      <details><summary>Кто увидит ответы?</summary><p>Только сотрудники, которых вы добавили в список доступа, и только в пределах их прав в 1С.</p></details>
+      <details><summary>У нас УТ, УНФ или конфигурация для РФ. Можно участвовать?</summary><p>Пока нет: сейчас разработка идёт только для 1С:Бухгалтерии для Беларуси редакции 2.1. УТ, УНФ и конфигурации для РФ — следующий этап. Напишите нам — сообщим, когда начнём.</p></details>
+    </div>
+  </section>
+
+  <section class="band-ink">
+    <div class="wrap cta">
+      <div>
+        <h2>Давайте попробуем вместе</h2>
+        <p class="lead muted">Напишите в Telegram — расскажу подробнее, покажу бота и вместе посмотрим, подходит ли ваша база для пилота.</p>
+        <div class="actions"><a class="btn btn-amber" href="https://t.me/egorka_vin" target="_blank" rel="noopener">Написать в Telegram</a></div>
+      </div>
+      <div class="contacts">
+        <p>Егор Виноградов</p>
+        <p><span>Telegram:</span> @egorka_vin</p>
+        <p><span>Телефон:</span> +375 29 508 02 10</p>
+        <p><span>E-mail:</span> egor.vin12345@gmail.com</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 ИИ-аналитик для 1С</p>
+    <p><a href="investors.html">Инвесторам</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
