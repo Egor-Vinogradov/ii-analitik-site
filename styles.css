@@ -167,3 +167,7 @@ td.r, th.r { text-align: right; white-space: nowrap; }
 footer { background: var(--ink); color: var(--on-ink-muted); font-size: 0.9rem; border-top: 1px solid #2E3E60; }
 footer .wrap { padding-block: 28px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
 footer a { color: var(--on-ink-muted); }
+
+/* Видео */
+.video-box { max-width: 1040px; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); background: var(--ink); box-shadow: 0 12px 40px rgba(20, 33, 61, 0.18); }
+.video-box video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: var(--ink); }
