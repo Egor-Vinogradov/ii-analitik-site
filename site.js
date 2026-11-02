@@ -1,75 +1,16 @@
-/* One-page site: views (#/analyst, #/modules, #/investors), cookie notice, back-to-top arrow. */
+/* Cookie notice, Yandex Metrika after consent, back-to-top arrow, redirect of old #/ links. */
 (function () {
   var KEY = 'ii_cookie_choice';
   var COUNTER_ID = 113988808;
   function getChoice() { try { return window.localStorage.getItem(KEY); } catch (e) { return null; } }
   function setChoice(v) { try { window.localStorage.setItem(KEY, v); } catch (e) {} }
 
-  /* ---- views ---- */
-  var views = [].slice.call(document.querySelectorAll('.view'));
-  var tabs = [].slice.call(document.querySelectorAll('[data-tab]'));
-  var subnavs = [].slice.call(document.querySelectorAll('.subnav'));
-  var subbar = document.querySelector('.subbar');
-  var names = views.map(function (v) { return v.getAttribute('data-view'); });
-
-  function viewOfId(id) {
-    var el = document.getElementById(id);
-    var v = el && el.closest ? el.closest('.view') : null;
-    return v ? v.getAttribute('data-view') : null;
+  /* ---- old links like /#/modules -> real pages ---- */
+  var old = /^#\/(analyst|modules|investors)(?:\/(.*))?$/.exec(location.hash || '');
+  if (old) {
+    location.replace((old[1] === 'analyst' ? '/' : '/' + old[1] + '/') + (old[2] ? '#' + old[2] : ''));
+    return;
   }
-  function parse() {
-    var h = '';
-    try { h = decodeURIComponent((location.hash || '').replace(/^#/, '')); } catch (e) { h = (location.hash || '').replace(/^#/, ''); }
-    if (h.charAt(0) === '/') {
-      var p = h.slice(1).split('/');
-      return { view: names.indexOf(p[0]) > -1 ? p[0] : 'analyst', id: p[1] || '' };
-    }
-    if (h) { var v = viewOfId(h); if (v) { return { view: v, id: h }; } }
-    return { view: 'analyst', id: '' };
-  }
-  function render(first) {
-    var r = parse(), active = null;
-    views.forEach(function (v) {
-      var on = v.getAttribute('data-view') === r.view;
-      v.hidden = !on;
-      if (on) { active = v; }
-    });
-    tabs.forEach(function (t) {
-      if (t.getAttribute('data-tab') === r.view) { t.setAttribute('aria-current', 'page'); }
-      else { t.removeAttribute('aria-current'); }
-    });
-    var any = false;
-    subnavs.forEach(function (s) {
-      var on = s.getAttribute('data-for') === r.view;
-      s.hidden = !on;
-      if (on) { any = true; }
-    });
-    if (subbar) { subbar.hidden = !any; }
-    if (active) { document.title = active.getAttribute('data-title'); }
-    var el = r.id ? document.getElementById(r.id) : null;
-    if (el && active && active.contains(el)) {
-      setTimeout(function () { el.scrollIntoView({ behavior: first ? 'auto' : 'smooth', block: 'start' }); }, 0);
-    } else if (!first) {
-      window.scrollTo(0, 0);
-    }
-  }
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
-    if (!a) { return; }
-    var h = a.getAttribute('href');
-    if (h.length < 2) { return; }
-    if (h.charAt(1) === '/') {
-      if (location.hash === h) { e.preventDefault(); window.scrollTo(0, 0); }
-      return;
-    }
-    var id = h.slice(1), v = viewOfId(id);
-    if (!v) { return; }
-    e.preventDefault();
-    var target = '#/' + v + '/' + id;
-    if (location.hash === target) { render(false); } else { location.hash = target; }
-  });
-  window.addEventListener('hashchange', function () { render(false); });
-  if (views.length) { render(true); }
 
   /* ---- Yandex Metrika: loaded only after "Понятно" ---- */
   function loadMetrika() {
@@ -92,7 +33,7 @@
     bar.setAttribute('aria-label', 'Уведомление о cookies');
     bar.innerHTML =
       '<div class="cookie-in">' +
-      '<p>Сайт использует cookies для статистики посещений. Подробнее — в <a href="cookies.html">политике cookies</a>.</p>' +
+      '<p>Сайт использует cookies для статистики посещений. Подробнее — в <a href="/cookies.html">политике cookies</a>.</p>' +
       '<div class="cookie-btns"><button type="button" class="cookie-yes">Понятно</button></div>' +
       '</div>';
     document.body.appendChild(bar);
