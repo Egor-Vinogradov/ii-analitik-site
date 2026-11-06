@@ -4,6 +4,16 @@
 (function () {
   if (window.__iiChat) { return; }
   window.__iiChat = true;
+  // Кнопка чата появляется, только если сервер бота доступен (читаемый ответ /healthz с разрешением CORS для сайта).
+  // Нет связи, туннель или n8n выключены, ответ 5xx или таймаут 6 с - виджета на странице нет.
+  var HEALTH = 'https://bot.ii-analitik.site/healthz';
+  if (!window.fetch) { return; }
+  var ctl = window.AbortController ? new AbortController() : null;
+  var tm = setTimeout(function () { if (ctl) { ctl.abort(); } }, 6000);
+  fetch(HEALTH, { cache: 'no-store', signal: ctl ? ctl.signal : undefined })
+    .then(function (r) { clearTimeout(tm); if (r.ok) { boot(); } })
+    .catch(function () { clearTimeout(tm); });
+  function boot() {
   var API = 'https://bot.ii-analitik.site/webhook/sajt-chat';
   var MAX = 1000;
   var TG = 'https://t.me/egorka_vin';
@@ -169,4 +179,5 @@
     var f = e.clipboardData && e.clipboardData.files;
     if (f && f.length) { e.preventDefault(); add('bot', 'Я понимаю только текст. Файлы и документы не принимаю.', false); }
   });
+  }
 })();
