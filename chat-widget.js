@@ -14,13 +14,18 @@
   fetch(HEALTH, { cache: 'no-store', signal: ctl ? ctl.signal : undefined })
     .then(function (r) { clearTimeout(tm); if (r.ok) { boot(); } })
     .catch(function () { clearTimeout(tm); });
+  // Кнопки сайта с атрибутом data-open-chat открывают чат (если бот доступен), иначе ведут в канал по ссылке.
+  document.addEventListener('click', function (e) {
+    var t = e.target && e.target.closest ? e.target.closest('[data-open-chat]') : null;
+    if (t && window.__iiChatOpen) { e.preventDefault(); window.__iiChatOpen(); }
+  });
   function boot() {
   var API = 'https://bot.ii-analitik.site/webhook/sajt-chat';
   var MAX = 1000;
-  var TG = 'https://t.me/egorka_vin';
+  var TG = 'https://t.me/ii_analitik_1c';
   var HELLO = 'Здравствуйте! Я помощник ИИ-аналитика для 1С. Расскажу, что умеют аналитик и модули распознавания документов и банка, как подключиться. Спросите своими словами.';
   var START = ['Что умеет', 'Распознавание документов', 'Безопасность', 'Оставить заявку'];
-  var DOWN = 'Сейчас бот недоступен, оставьте контакт: Telegram ' + TG + ', телефон +375 29 508-02-10 или почта egor.vin12345@gmail.com. Мы ответим в рабочее время.';
+  var DOWN = 'Сейчас бот недоступен или превышен лимит сообщений. Новости и ответы бота — в нашем канале ' + TG + '. Заявку можно оставить позже, зайдя на сайт ещё раз.';
   var KS = 'ii_chat_session', KL = 'ii_chat_log', KSND = 'ii_chat_sound';
 
   function get(st, k) { try { return window[st].getItem(k); } catch (e) { return null; } }
@@ -51,13 +56,13 @@
     '.iiw-clr{flex:none;height:32px;padding:0 10px;border-radius:999px;border:1px solid #5B6B8C;background:transparent;color:#F6F5F0;font:13px/1 inherit;cursor:pointer}',
     '.iiw-clr:hover,.iiw-x:hover{background:#22345C}.iiw-clr.warn{background:#E8A33D;border-color:#E8A33D;color:#14213D}',
     '.iiw-snd{font-size:16px}',
-    '.iiw-log{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;background:#F6F5F0}',
+    '.iiw-log{flex:1 1 auto;min-height:0;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;background:#F6F5F0}',
     '.iiw-m{max-width:86%;padding:9px 12px;border-radius:14px;white-space:pre-wrap;word-wrap:break-word;overflow-wrap:anywhere}',
     '.iiw-bot{align-self:flex-start;background:#FDFCF9;border:1px solid #DCDAD2;border-bottom-left-radius:4px}',
     '.iiw-me{align-self:flex-end;background:#14213D;color:#F6F5F0;border-bottom-right-radius:4px}',
     '.iiw-m a{color:#8A520C;text-decoration:underline}.iiw-me a{color:#E8A33D}',
     '.iiw-dots{align-self:flex-start;color:#4A5568;font-size:13px;padding:2px 4px}',
-    '.iiw-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px;background:#F6F5F0}',
+    '.iiw-chips{flex:none;max-height:38%;overflow-y:auto;display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px;background:#F6F5F0}',
     '.iiw-chip{font:inherit;font-size:14px;padding:6px 12px;border-radius:999px;border:1px solid #14213D;background:#FDFCF9;color:#14213D;cursor:pointer}',
     '.iiw-chip:hover{background:#E9EEF5}',
     '.iiw-form{display:flex;gap:8px;padding:10px;border-top:1px solid #DCDAD2;background:#FDFCF9}',
@@ -121,9 +126,11 @@
   if (window.MutationObserver) { new MutationObserver(place).observe(document.body, { childList: true, attributes: true, attributeFilter: ['class'] }); }
 
   function save() { put('sessionStorage', KL, JSON.stringify(log.slice(-40))); }
+  // прокрутка в конец; повтор после перерисовки, потому что строка кнопок меняет высоту списка
+  function toBottom() { list.scrollTop = list.scrollHeight; if (window.requestAnimationFrame) { requestAnimationFrame(function () { list.scrollTop = list.scrollHeight; }); } }
   function add(who, text, keep) {
     var m = el('div', 'iiw-m ' + (who === 'me' ? 'iiw-me' : 'iiw-bot')); fill(m, text);
-    list.appendChild(m); list.scrollTop = list.scrollHeight;
+    list.appendChild(m); toBottom();
     if (keep !== false) { log.push({ w: who, t: text }); save(); }
   }
   function setChips(arr) {
@@ -133,6 +140,7 @@
       c.addEventListener('click', function () { ask(t); });
       chips.appendChild(c);
     });
+    toBottom();
   }
   // звук ответа: короткий сигнал через Web Audio (без файлов). Включается жестом пользователя (отправка вопроса), выключатель запоминается.
   var sound = get('localStorage', KSND) !== '0', ac = null;
@@ -227,11 +235,14 @@
   }
   function close() { box.classList.remove('open'); document.documentElement.classList.remove('iiw-open'); btn.focus(); }
   btn.addEventListener('click', open);
+  window.__iiChatOpen = function () { var fresh = !list.firstChild && !log.length; open(); if (fresh) { ask('Оставить заявку'); } };
   x.addEventListener('click', close);
   box.addEventListener('keydown', function (e) { if (e.key === 'Escape') { close(); } });
   form.addEventListener('submit', function (e) { e.preventDefault(); ask(input.value); });
   input.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(input.value); } });
-  input.addEventListener('input', function () { input.style.height = ''; input.style.height = Math.min(input.scrollHeight, 120) + 'px'; });
+  input.addEventListener('input', function () { input.style.height = ''; input.style.height = Math.min(input.scrollHeight, 120) + 'px'; toBottom(); });
+  input.addEventListener('focus', function () { setTimeout(toBottom, 300); });
+  window.addEventListener('resize', toBottom);
   // файлы не принимаем: перетаскивание и вставка картинок — подсказка
   box.addEventListener('dragover', function (e) { e.preventDefault(); });
   box.addEventListener('drop', function (e) { e.preventDefault(); add('bot', 'Я понимаю только текст. Файлы и документы не принимаю.', false); });
