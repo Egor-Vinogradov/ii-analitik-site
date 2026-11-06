@@ -1,6 +1,7 @@
 /* Чат-виджет ii-analitik.site: кнопка справа внизу, окно чата, ответы бота по базе знаний (workflow 07 studio).
    Подключение: <script src="/chat-widget.js" defer></script> перед </body>. Без внешних библиотек.
-   Бот не видит данные клиентов и не подключён к 1С. Принимает только текст. */
+   Бот не видит данные клиентов и не подключён к 1С. Принимает только текст.
+   Шапка: «Очистить» (новый диалог), звук ответа вкл/выкл (запоминается), закрыть. */
 (function () {
   if (window.__iiChat) { return; }
   window.__iiChat = true;
@@ -20,7 +21,7 @@
   var HELLO = 'Здравствуйте! Я помощник ИИ-аналитика для 1С. Расскажу, что умеют аналитик и модули распознавания документов и банка, как подключиться. Спросите своими словами.';
   var START = ['Что умеет', 'Распознавание документов', 'Безопасность', 'Оставить заявку'];
   var DOWN = 'Сейчас бот недоступен, оставьте контакт: Telegram ' + TG + ', телефон +375 29 508-02-10 или почта egor.vin12345@gmail.com. Мы ответим в рабочее время.';
-  var KS = 'ii_chat_session', KL = 'ii_chat_log';
+  var KS = 'ii_chat_session', KL = 'ii_chat_log', KSND = 'ii_chat_sound';
 
   function get(st, k) { try { return window[st].getItem(k); } catch (e) { return null; } }
   function put(st, k, v) { try { window[st].setItem(k, v); } catch (e) {} }
@@ -39,7 +40,7 @@
     '.iiw-btn{position:fixed;right:20px;bottom:24px;z-index:45;height:52px;padding:0 20px 0 16px;border-radius:999px;border:0;cursor:pointer;',
     'background:#E8A33D;color:#14213D;font:600 15px/1 "IBM Plex Sans","Segoe UI",Arial,sans-serif;display:inline-flex;align-items:center;gap:8px;',
     'box-shadow:0 8px 24px rgba(20,33,61,.3)}',
-    '.iiw-btn:hover{background:#F0B556}.iiw-btn:focus-visible,.iiw-x:focus-visible,.iiw-chip:focus-visible,.iiw-send:focus-visible{outline:3px solid #14213D;outline-offset:2px}',
+    '.iiw-btn:hover{background:#F0B556}.iiw-btn:focus-visible,.iiw-x:focus-visible,.iiw-chip:focus-visible,.iiw-send:focus-visible,.iiw-clr:focus-visible{outline:3px solid #14213D;outline-offset:2px}',
     '.iiw-box{position:fixed;right:20px;bottom:24px;z-index:60;width:380px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100vh - 48px);',
     'display:none;flex-direction:column;background:#FDFCF9;color:#14213D;border:1px solid #DCDAD2;border-radius:16px;overflow:hidden;',
     'box-shadow:0 18px 50px rgba(20,33,61,.35);font:15px/1.45 "IBM Plex Sans","Segoe UI",Arial,sans-serif}',
@@ -47,6 +48,9 @@
     '.iiw-head{display:flex;align-items:center;gap:10px;padding:12px 12px 12px 16px;background:#14213D;color:#F6F5F0;border-bottom:3px solid #E8A33D}',
     '.iiw-head b{flex:1;font:600 16px/1.2 "Rubik","Trebuchet MS",Arial,sans-serif}.iiw-head small{display:block;font:400 12px/1.3 inherit;color:#C9D3E3}',
     '.iiw-x{width:36px;height:36px;border-radius:50%;border:1px solid #5B6B8C;background:transparent;color:#F6F5F0;font-size:20px;line-height:1;cursor:pointer}',
+    '.iiw-clr{flex:none;height:32px;padding:0 10px;border-radius:999px;border:1px solid #5B6B8C;background:transparent;color:#F6F5F0;font:13px/1 inherit;cursor:pointer}',
+    '.iiw-clr:hover,.iiw-x:hover{background:#22345C}.iiw-clr.warn{background:#E8A33D;border-color:#E8A33D;color:#14213D}',
+    '.iiw-snd{font-size:16px}',
     '.iiw-log{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;background:#F6F5F0}',
     '.iiw-m{max-width:86%;padding:9px 12px;border-radius:14px;white-space:pre-wrap;word-wrap:break-word;overflow-wrap:anywhere}',
     '.iiw-bot{align-self:flex-start;background:#FDFCF9;border:1px solid #DCDAD2;border-bottom-left-radius:4px}',
@@ -89,7 +93,9 @@
   var head = el('div', 'iiw-head'); var ttl = el('b', null, 'Помощник ИИ-аналитика');
   ttl.appendChild(el('small', null, 'Отвечает по описанию продукта, к 1С не подключён'));
   var x = el('button', 'iiw-x', '×'); x.type = 'button'; x.setAttribute('aria-label', 'Закрыть чат');
-  head.appendChild(ttl); head.appendChild(x);
+  var clr = el('button', 'iiw-clr', 'Очистить'); clr.type = 'button'; clr.setAttribute('aria-label', 'Очистить чат и начать новый диалог');
+  var snd = el('button', 'iiw-x iiw-snd'); snd.type = 'button';
+  head.appendChild(ttl); head.appendChild(clr); head.appendChild(snd); head.appendChild(x);
   var list = el('div', 'iiw-log'); list.setAttribute('aria-live', 'polite');
   var chips = el('div', 'iiw-chips');
   var form = el('form', 'iiw-form');
@@ -128,19 +134,57 @@
       chips.appendChild(c);
     });
   }
-  var busy = false;
+  // звук ответа: короткий сигнал через Web Audio (без файлов). Включается жестом пользователя (отправка вопроса), выключатель запоминается.
+  var sound = get('localStorage', KSND) !== '0', ac = null;
+  function sndView() {
+    snd.textContent = sound ? '\uD83D\uDD14' : '\uD83D\uDD15';
+    snd.setAttribute('aria-label', sound ? 'Звук ответов включён, выключить' : 'Звук ответов выключен, включить');
+    snd.title = sound ? 'Звук включён' : 'Звук выключен';
+  }
+  function unlock() {
+    try {
+      var C = window.AudioContext || window.webkitAudioContext;
+      if (!C) { return; }
+      if (!ac) { ac = new C(); }
+      if (ac.state === 'suspended') { ac.resume(); }
+    } catch (e) {}
+  }
+  function ding() {
+    if (!sound || !ac || !box.classList.contains('open')) { return; }
+    try {
+      var t0 = ac.currentTime;
+      [[880, 0], [1175, 0.12]].forEach(function (p) {
+        var o = ac.createOscillator(), g = ac.createGain(), t = t0 + p[1];
+        o.type = 'sine'; o.frequency.value = p[0];
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.exponentialRampToValueAtTime(0.12, t + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 0.22);
+        o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t + 0.25);
+      });
+    } catch (e) {}
+  }
+  sndView();
+  snd.addEventListener('click', function () {
+    sound = !sound; put('localStorage', KSND, sound ? '1' : '0'); sndView();
+    if (sound) { unlock(); ding(); }
+  });
+  var busy = false, epoch = 0;
   function ask(text) {
     text = String(text || '').trim();
     if (!text || busy) { return; }
     if (text.length > MAX) { add('bot', 'Сообщение длиннее 1 000 знаков — сократите, пожалуйста.', false); return; }
+    unlock();
+    var ep = epoch;
     busy = true; send.disabled = true; setChips([]);
     add('me', text); input.value = ''; input.style.height = '';
     var dots = el('div', 'iiw-dots', 'Печатает…'); list.appendChild(dots); list.scrollTop = list.scrollHeight;
     var done = false;
-    function finish(reply, buttons) {
+    function finish(reply, buttons, ok) {
       if (done) { return; } done = true;
+      if (ep !== epoch) { return; } // чат очищен, пока шёл запрос: поздний ответ не показываем
       if (dots.parentNode) { dots.parentNode.removeChild(dots); }
       add('bot', reply); setChips(buttons); busy = false; send.disabled = false; input.focus();
+      if (ok) { ding(); }
     }
     var timer = setTimeout(function () { finish(DOWN, []); }, 60000);
     var xhr = new XMLHttpRequest();
@@ -151,12 +195,28 @@
       var r = null; try { r = JSON.parse(xhr.responseText); } catch (e) { r = null; }
       if (xhr.status === 200 && r && typeof r.reply === 'string' && r.reply) {
         var b = Array.isArray(r.buttons) ? r.buttons.filter(function (v) { return typeof v === 'string'; }).slice(0, 6) : [];
-        finish(r.reply.slice(0, 3000), b);
+        finish(r.reply.slice(0, 3000), b, true);
       } else { finish(DOWN, []); }
     };
     xhr.onerror = function () { clearTimeout(timer); finish(DOWN, []); };
     xhr.send(JSON.stringify({ session: session, text: text }));
   }
+  // «Очистить»: двойное нажатие (первое просит подтверждения 4 с). Новый диалог = новый идентификатор сессии, шаги заявки начинаются заново.
+  var armed = null;
+  function disarm() { if (armed) { clearTimeout(armed); armed = null; } clr.classList.remove('warn'); clr.textContent = 'Очистить'; }
+  clr.addEventListener('click', function () {
+    if (!armed) {
+      clr.classList.add('warn'); clr.textContent = 'Точно очистить?';
+      armed = setTimeout(disarm, 4000);
+      return;
+    }
+    disarm();
+    epoch++; busy = false; send.disabled = false;
+    log = []; save(); list.textContent = '';
+    session = newId(); put('localStorage', KS, session);
+    add('bot', HELLO, false); setChips(START);
+    input.value = ''; input.style.height = ''; input.focus();
+  });
   function open() {
     box.classList.add('open'); document.documentElement.classList.add('iiw-open');
     if (!list.firstChild) {
