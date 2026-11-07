@@ -14,7 +14,15 @@
   fetch(HEALTH, { cache: 'no-store', signal: ctl ? ctl.signal : undefined })
     .then(function (r) { clearTimeout(tm); if (r.ok) { boot(); } })
     .catch(function () { clearTimeout(tm); });
-  // Кнопки сайта с атрибутом data-open-chat открывают чат (если бот доступен), иначе ведут в канал по ссылке.
+  // Кнопки сайта с атрибутом data-open-chat открывают чат (если бот доступен), иначе открывают письмо на почту проекта; в тело письма подставляется страница, откуда пришла заявка.
+  // письмо-запас: добавляем в тело путь страницы (по нему мы понимаем, откуда заявка)
+  try {
+    var ml = document.querySelectorAll('a[data-open-chat][href^="mailto:"]');
+    for (var mi = 0; mi < ml.length; mi++) {
+      var hr = ml[mi].getAttribute('href');
+      if (hr.indexOf('body=') !== -1 && decodeURIComponent(hr).indexOf('Страница:') === -1) { ml[mi].setAttribute('href', hr + encodeURIComponent('\n\n— — —\nСтраница: ' + location.pathname)); }
+    }
+  } catch (err) {}
   document.addEventListener('click', function (e) {
     var t = e.target && e.target.closest ? e.target.closest('[data-open-chat]') : null;
     if (t && window.__iiChatOpen) { e.preventDefault(); window.__iiChatOpen(); }
@@ -25,7 +33,8 @@
   var TG = 'https://t.me/ii_analitik_1c';
   var HELLO = 'Здравствуйте! Я помощник ИИ-аналитика для 1С. Расскажу, что умеют аналитик и модули распознавания документов и банка, как подключиться. Спросите своими словами.';
   var START = ['Что умеет', 'Распознавание документов', 'Безопасность', 'Оставить заявку'];
-  var DOWN = 'Сейчас бот недоступен или превышен лимит сообщений. Новости и ответы бота — в нашем канале ' + TG + '. Заявку можно оставить позже, зайдя на сайт ещё раз.';
+  var MAIL = 'info@ii-analitik.site', PHONE = '+375 29 508 02 10';
+  var DOWN = 'Сейчас бот недоступен или превышен лимит сообщений. Заявку можно оставить письмом на ' + MAIL + ' или по телефону ' + PHONE + '. Новости проекта — в канале ' + TG + '.';
   var KS = 'ii_chat_session', KL = 'ii_chat_log', KSND = 'ii_chat_sound';
 
   function get(st, k) { try { return window[st].getItem(k); } catch (e) { return null; } }
@@ -107,7 +116,8 @@
   var input = el('textarea', 'iiw-in'); input.rows = 1; input.maxLength = MAX; input.placeholder = 'Ваш вопрос…'; input.setAttribute('aria-label', 'Ваш вопрос');
   var send = el('button', 'iiw-send', 'Отправить'); send.type = 'submit';
   form.appendChild(input); form.appendChild(send);
-  var note = el('div', 'iiw-note', 'Не присылайте пароли, выгрузки 1С и данные фирмы. Только текст, до 1 000 знаков.');
+  var note = el('div', 'iiw-note', 'Не присылайте пароли и выгрузки из 1С. Только текст, до 1 000 знаков. Контакты в чате не оставляйте: заявка — на странице «Оставить заявку». Как обрабатываются сообщения — в ');
+  var pl = el('a', null, 'политике обработки данных'); pl.href = '/privacy/'; pl.target = '_blank'; pl.rel = 'noopener'; pl.style.color = 'inherit'; note.appendChild(pl); note.appendChild(document.createTextNode('.'));
   box.appendChild(head); box.appendChild(list); box.appendChild(chips); box.appendChild(form); box.appendChild(note);
   document.body.appendChild(btn); document.body.appendChild(box);
 
@@ -180,6 +190,7 @@
   function ask(text) {
     text = String(text || '').trim();
     if (!text || busy) { return; }
+    if (text === 'Оставить заявку') { location.href = '/zayavka/'; return; }
     if (text.length > MAX) { add('bot', 'Сообщение длиннее 1 000 знаков — сократите, пожалуйста.', false); return; }
     unlock();
     var ep = epoch;
@@ -235,7 +246,7 @@
   }
   function close() { box.classList.remove('open'); document.documentElement.classList.remove('iiw-open'); btn.focus(); }
   btn.addEventListener('click', open);
-  window.__iiChatOpen = function () { var fresh = !list.firstChild && !log.length; open(); if (fresh) { ask('Оставить заявку'); } };
+  window.__iiChatOpen = function () { open(); };
   x.addEventListener('click', close);
   box.addEventListener('keydown', function (e) { if (e.key === 'Escape') { close(); } });
   form.addEventListener('submit', function (e) { e.preventDefault(); ask(input.value); });

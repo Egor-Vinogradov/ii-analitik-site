@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Инвесторам — ИИ-аналитик и модули 1С</title>
-<meta name="description" content="Для инвесторов: рынок, модель и план проекта «ИИ-аналитик для 1С» и модулей для бухгалтерии.">
+<meta name="description" content="Для инвесторов: продукты и их стадии, рынок, модель и каналы продаж, риски и план проекта «ИИ-аналитик для 1С» и модулей для бухгалтерии.">
 <link rel="canonical" href="https://ii-analitik.site/investors/">
-<meta name="robots" content="noindex, follow">
+<meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="ИИ-аналитик для 1С">
@@ -19,9 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;600&amp;display=swap">
+<link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -34,6 +32,7 @@
     </a>
     <nav class="tabs" aria-label="Разделы сайта">
       <a href="/" data-tab="analyst">ИИ-аналитик</a>
+      <a href="/ii-v-1s-dlya-buhgaltera/" data-tab="accountant">Бухгалтерским компаниям</a>
       <a href="/modules/" data-tab="modules">Модули 1С</a>
       <a href="/investors/" data-tab="investors" aria-current="page" class="tab-aside">Инвесторам</a>
     </nav>
@@ -42,15 +41,15 @@
         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4 3 11l6 2.5L11 20l3-4.5 5 3.5z"/><path d="m9 13.5 9-7"/></svg>
         <span>Канал в Telegram</span>
       </a>
-      <a class="btn btn-amber" href="https://t.me/egorka_vin" target="_blank" rel="noopener">Написать</a>
+      <a class="btn btn-amber" href="/zayavka/">Оставить заявку</a>
     </div>
   </div>
   <div class="subbar">
     <div class="wrap">
       <nav class="subnav" data-for="investors" aria-label="Разделы страницы">
+        <a href="#products">Продукты</a>
         <a href="#market">Рынок</a>
-        <a href="#model">Модель</a>
-        <a href="#inv-modules">Модули 1С</a>
+        <a href="#model">Модель и продажи</a>
         <a href="#plan">План</a>
       </nav>
     </div>
@@ -63,11 +62,11 @@
     <div class="wrap hero">
       <div>
         <p class="eyebrow">Для инвесторов · Беларусь, затем конфигурации для РФ</p>
-        <h1>Аналитик в Telegram для каждого владельца бизнеса на 1С</h1>
-        <p class="lead muted">Руководитель спрашивает обычным языком, бот отвечает цифрами из его 1С и анализом: почему так, что изменилось, где риски. Сейчас идёт разработка для 1С:Бухгалтерии для Беларуси редакции 2.1 и поиск пилотных компаний, запуск пилота — ориентировочно в ноябре 2026. Ищем инвестора или стратегического партнёра — не обязательно из мира 1С.</p>
+        <h1>ИИ-инструменты для бухгалтерии на 1С: аналитик для руководителя и модули для бухгалтера</h1>
+        <p class="lead muted">Один Telegram-бот фирмы, в который части подключаются по отдельности. ИИ-аналитик отвечает руководителю цифрами из 1С и объясняет их. Модули сокращают ручной ввод в бухгалтерии. ИИ-аналитик и распознавание документов сделаны и ждут пилота, остальное на других стадиях: ниже статус по каждому продукту.</p>
         <div class="actions">
-          <a class="btn btn-amber" href="https://t.me/egorka_vin" target="_blank" rel="noopener">Обсудить в Telegram</a>
-          <a class="btn btn-ghost" href="#plan">Статус и план</a>
+          <a class="btn btn-amber" href="/zayavka/">Обсудить участие</a>
+          <a class="btn btn-ghost" href="#products">Продукты и статус</a>
         </div>
       </div>
       <div class="chat" aria-label="Пример ответа бота на демо-данных">
@@ -79,139 +78,168 @@
     </div>
   </section>
 
-  <section class="wrap section">
+  <section id="products" class="wrap section">
     <div class="section-head">
-      <p class="eyebrow">Проблема и решение</p>
-      <h2>Владелец видит свои цифры с опозданием</h2>
-      <p class="muted">Чтобы узнать деньги, долги или прибыль, он просит бухгалтера и ждёт. Отчёты 1С сделаны для бухгалтера, выводов в них нет. Мы даём ответ на вопрос за секунды прямо в Telegram.</p>
+      <p class="eyebrow">Продукты</p>
+      <h2>Что мы делаем и на какой стадии</h2>
+      <p class="muted">Метки те же, что на главной: «Ждёт пилота» — сделано, проверяем в пилоте, «В разработке» — делаем, «В планах» — позже. Сроков не называем.</p>
     </div>
     <div class="grid">
-      <div class="tile"><h3>Цифры считает 1С</h3><p class="muted">ИИ только понимает вопрос и выбирает отчёт из готового набора. Точность — как в учёте.</p></div>
-      <div class="tile"><h3>Только чтение</h3><p class="muted">ИИ-аналитик читает данные из 1С и ничего в них не меняет, права берутся из 1С.</p></div>
-      <div class="tile"><h3>Ядро и адаптеры</h3><p class="muted">Общее ядро и адаптер под каждую конфигурацию 1С. Новая конфигурация — без переписывания продукта.</p></div>
-    </div>
-  </section>
-
-  <section id="market" class="band-sky">
-    <div class="wrap section">
-      <div class="section-head">
-        <p class="eyebrow">Рынок</p>
-        <h2>Тысячи компаний на 1С и нет прямого аналога</h2>
-      </div>
-      <div class="grid">
-        <div class="tile"><p class="big-num">10–20 тыс.</p><p class="muted">целевых компаний в Беларуси, где владелец отделён от бухгалтерии. Наша оценка.</p></div>
-        <div class="tile"><p class="big-num">РФ</p><p class="muted">перспектива: конфигурации 1С для РФ на той же платформе, ядро продукта переиспользуется.</p></div>
-      </div>
-      <div class="table-box">
-        <table>
-          <thead><tr><th>Что есть рядом</th><th>Чем отличается</th></tr></thead>
-          <tbody>
-            <tr><td>Рассылка отчётов 1С в Telegram</td><td>Нет диалога и выводов</td></tr>
-            <tr><td>GPT-ассистенты для 1С</td><td>Под ERP, УТ, КА для РФ</td></tr>
-            <tr><td>1С:Аналитика (BI)</td><td>Требует внедрения, не в Telegram</td></tr>
-            <tr><td>1С:Напарник</td><td>Инструмент для разработчиков</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section id="model" class="wrap section">
-    <div class="section-head">
-      <p class="eyebrow">Бизнес-модель</p>
-      <h2>Два направления на одной платформе 1С</h2>
-      <p class="muted">ИИ-аналитик продаём по подписке. Модули 1С — отдельное направление: распознавание документов и выписки по подписке, программные кассы — отдельным модулем. Цены и условия уточняем по итогам пилота.</p>
-    </div>
-    <div class="grid-2">
       <div class="tile">
-        <p class="tag now">Пилот</p>
+        <p class="tag now">Ждёт пилота</p>
         <h3>ИИ-аналитик</h3>
-        <p class="muted">Бот в Telegram для руководителя. Два режима: «Экспресс» — быстрые ответы без ИИ-модели, «Анализ» — ответы с ИИ. Для нас — регулярный доход.</p>
+        <p class="muted">Бот в Telegram для руководителя: деньги, долги, прибыль, девять видов анализа («почему упала прибыль», ликвидность и риск банкротства, хватит ли денег и другие), утренняя сводка, акт сверки с отправкой письмом. Каждый ответ сверен с ОСВ или балансом 1С. Проверен на демо-базе и на базе пилотного клиента (1С:Бухгалтерия для Беларуси 2.1.65).</p>
+        <p class="fmt">Формат: подписка</p>
+      </div>
+      <div class="tile">
+        <p class="tag now">Ждёт пилота</p>
+        <h3>Распознавание первичных документов</h3>
+        <p class="muted">ТТН, ТН и акты распознаём и проверяем на дубли и арифметику. Если в 1С всё внесено (организация, контрагент, договор, номенклатура), документ можем создавать и проводить автоматически; если чего-то не хватает — создаём непроведённым и называем, что именно. Режим уточняем с каждой компанией на пилоте; сроков и цен не называем.</p>
+        <p class="fmt">Формат: подписка</p>
       </div>
       <div class="tile">
         <p class="tag next">В разработке</p>
-        <h3>Модули 1С</h3>
-        <p class="muted">Распознавание первичных документов, загрузка банковских выписок, интеграция с программными кассами РБ.</p>
+        <h3>Банк</h3>
+        <p class="muted">Загрузка выписки в 1С и разноска платежей по документам.</p>
+        <p class="fmt">Формат: подписка</p>
+      </div>
+      <div class="tile">
+        <p class="tag check">Обсуждается</p>
+        <h3>Отдельные модули под вашу задачу</h3>
+        <p class="muted">Можем разработать и продать отдельный модуль. Условия обсуждаем индивидуально.</p>
+        <p class="fmt">Формат: по договорённости</p>
+      </div>
+      <div class="tile">
+        <p class="tag check">В проработке</p>
+        <h3>Размещение в контуре клиента</h3>
+        <p class="muted">Бот на сервере клиента или в его облаке, для компаний, которым нельзя выносить данные. Разовая установка и лицензия плюс годовое сопровождение. Установщик и выездной набор есть, полное развёртывание у клиента в проработке; условия обсуждаются.</p>
+      </div>
+      <div class="tile">
+        <p class="tag check">В планах</p>
+        <h3>Следующие направления</h3>
+        <p class="muted">Сверка с ЭСЧФ, проверка договоров по чек-листу клиента, маршрутизация входящих документов, поиск по архиву по смыслу, справочные ответы по нормативам РБ.</p>
       </div>
     </div>
-  </section>
-
-  <section id="inv-modules" class="band-ink modules-hl">
-    <div class="wrap section">
-      <div class="section-head">
-        <p class="eyebrow">Второе направление</p>
-        <span class="dev-badge">В разработке</span>
-        <h2>Модули 1С: меньше ручного ввода в бухгалтерии</h2>
-        <p class="muted">ИИ-аналитик отвечает руководителю. Модули решают другую задачу: сокращают ручную работу бухгалтерии. Планируем их для любой компании на 1С, не только для аутсорса, и развиваем как отдельное направление.</p>
-      </div>
-      <div class="shield">
-        <div class="tile">
-          <p class="tag next">В разработке</p>
-          <h3>Распознавание первичных документов</h3>
-          <p class="muted">Планируем полуавтомат: на пилоте в 1С всегда создаётся черновик, бухгалтер проверяет.</p>
-          <p class="fmt">Формат: подписка</p>
-        </div>
-        <div class="tile">
-          <p class="tag next">В разработке</p>
-          <h3>Загрузка банковских выписок</h3>
-          <p class="muted">Планируем загрузку выписок, документы в 1С и умную разноску платежей.</p>
-          <p class="fmt">Формат: подписка</p>
-        </div>
-        <div class="tile">
-          <p class="tag next">В разработке</p>
-          <h3>Интеграция с программными кассами РБ</h3>
-          <p class="muted">Готовим передачу данных касс в 1С, отдельный модуль на каждую кассу.</p>
-          <p class="fmt">Формат: отдельный модуль на каждую кассу</p>
-        </div>
-      </div>
-    </div>
+    <div class="actions"><a class="btn btn-ink" href="/modules/">Подробнее о модулях 1С</a> <a class="btn btn-ink" href="/">Об ИИ-аналитике</a></div>
   </section>
 
   <section class="band-sky">
     <div class="wrap section">
       <div class="section-head">
-        <p class="eyebrow">Риски</p>
-        <h2>Что может пойти не так и что мы делаем</h2>
+        <p class="eyebrow">Проблема и решение</p>
+        <h2>Владелец видит свои цифры с опозданием</h2>
+        <p class="muted">Чтобы узнать деньги, долги или прибыль, он просит бухгалтера и ждёт. Отчёты 1С сделаны для бухгалтера, выводов в них нет. Мы даём ответ за секунды прямо в Telegram, а бухгалтерии помогаем меньше вводить руками.</p>
       </div>
       <div class="grid">
-        <div class="tile"><h3>Похожее решение от фирмы 1С</h3><p class="muted">Окно — 1–2 года. Ставка на скорость, партнёрский канал и белорусскую локализацию.</p></div>
-        <div class="tile"><h3>Рост цены ИИ и курса</h3><p class="muted">Простые шаги на дешёвой модели, пакеты по предоплате, пересмотр цены в договоре.</p></div>
-        <div class="tile"><h3>Нетиповые базы клиентов</h3><p class="muted">Проверка базы до подключения и таблица соответствий счетов вместо жёсткой привязки.</p></div>
-        <div class="tile"><h3>Зависимость от внешних интерфейсов</h3><p class="muted">Модули опираются на внешние форматы и сервисы, которые могут меняться. Закладываем время на поддержку и обновления.</p></div>
+        <div class="tile"><h3>Цифры считает 1С</h3><p class="muted">ИИ понимает вопрос и выбирает отчёт из готового набора, к базе у него нет прямого доступа. Точность — как в учёте.</p></div>
+        <div class="tile"><h3>Только чтение</h3><p class="muted">ИИ-аналитик ничего не меняет в базе. Права доступа проверяет сама 1С.</p></div>
+        <div class="tile"><h3>Обезличивание</h3><p class="muted">Во внешний ИИ-сервис уходят суммы и условные коды вместо названий контрагентов, товаров и ФИО. Настоящие названия подставляются на сервере уже после ответа.</p></div>
+        <div class="tile"><h3>Ядро и адаптеры</h3><p class="muted">Общее ядро (бот, ИИ, обезличивание, права) и адаптер под каждую конфигурацию 1С. Новая конфигурация — без переписывания продукта.</p></div>
       </div>
     </div>
   </section>
 
-  <section id="plan" class="wrap section">
+  <section id="market" class="wrap section">
     <div class="section-head">
-      <p class="eyebrow">Статус и план</p>
-      <h2>Где мы и куда идём</h2>
+      <p class="eyebrow">Рынок</p>
+      <h2>Тысячи компаний на 1С и свободная связка «документы + цифры руководителю»</h2>
     </div>
     <div class="grid">
-      <div class="tile">
-        <p class="tag now">Сейчас</p>
-        <ul class="muted" style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px">
-          <li>Разработка расширения для 1С:Бухгалтерии для Беларуси, ред. 2.1 (на версии 2.1.65)</li>
-          <li>Обработка «Проверка совместимости» базы клиента</li>
-          <li>Поиск пилотных компаний</li>
-          <li>Разработка модулей 1С: распознавание первичных документов, банковские выписки, интеграция с кассами РБ</li>
-        </ul>
+      <div class="tile"><p class="big-num">~135 тыс.</p><p class="muted">малых и средних юрлиц в Беларуси на 1 января 2026 года по данным Белстата; число растёт после ограничений для ИП. 1С — фактический стандарт учёта.</p></div>
+      <div class="tile"><p class="big-num">10–20 тыс.</p><p class="muted">целевых компаний, где владелец отделён от бухгалтерии. Наша оценка.</p></div>
+      <div class="tile"><p class="big-num">РФ</p><p class="muted">перспектива: конфигурации 1С для РФ на той же платформе, ядро продукта переиспользуется.</p></div>
+    </div>
+    <div class="table-box">
+      <table>
+        <thead><tr><th>Что есть рядом</th><th>Чем отличается</th></tr></thead>
+        <tbody>
+          <tr><td>Рассылка отчётов 1С в Telegram</td><td>Нет диалога и выводов</td></tr>
+          <tr><td>GPT-ассистенты для 1С</td><td>Под ERP, УТ, КА для РФ</td></tr>
+          <tr><td>1С:Аналитика (BI)</td><td>Требует внедрения, не в Telegram</td></tr>
+          <tr><td>1С:Напарник</td><td>Инструмент для разработчиков</td></tr>
+          <tr><td>Сервисы распознавания белорусских накладных</td><td>Занимаются вводом документов; ответов руководителю цифрами из 1С в том же боте на проверенных страницах не видно</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="model" class="band-sky">
+    <div class="wrap section">
+      <div class="section-head">
+        <p class="eyebrow">Модель и продажи</p>
+        <h2>Как мы зарабатываем и как продаём</h2>
+        <p class="muted">Цены и условия уточняем по итогам пилота.</p>
       </div>
-      <div class="tile">
-        <p class="tag check">Ближайшие шаги</p>
-        <ol class="muted" style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px">
-          <li>Запуск пилота — ориентировочно ноябрь 2026</li>
-          <li>Пилот на 1С:Бухгалтерии для Беларуси в действующих компаниях</li>
-          <li>Первые платные клиенты — по подписке</li>
-        </ol>
+      <div class="grid-2">
+        <div class="tile">
+          <h3>Как зарабатываем</h3>
+          <ul class="muted" style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px">
+            <li>Подписка на ИИ-аналитика в облаке — основной вариант</li>
+            <li>Подписка на модули: распознавание документов, банк</li>
+            <li>Отдельные модули под задачу клиента — разработка и продажа по договорённости</li>
+            <li>Подключение базы клиента — разовая услуга</li>
+            <li>В контуре клиента — установка и лицензия плюс годовое сопровождение</li>
+          </ul>
+        </div>
+        <div class="tile">
+          <h3>Как продаём</h3>
+          <ul class="muted" style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px">
+            <li>Основной канал — франчайзи 1С: они продают и подключают, мы делаем продукт и поддержку</li>
+            <li>Бухгалтерский аутсорсинг: для фирмы с десятками клиентов бот помогает удерживать клиента</li>
+            <li>Агенты на проценте с подписки</li>
+            <li>Россия — после пилота, через российского франчайзи или маркетплейс</li>
+          </ul>
+          <p class="muted">Последовательность: пилот, кейс с цифрами (сколько часов сэкономлено), переговоры с 2–3 франчайзи. Подробнее — на странице <a href="/partners/">для партнёров</a>.</p>
+        </div>
       </div>
-      <div class="tile">
-        <p class="tag next">Перспектива</p>
-        <ul class="muted" style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px">
-          <li>УТ и УНФ для Беларуси</li>
-          <li>Конфигурации для РФ</li>
-          <li>Партнёрство с франчайзи 1С</li>
-        </ul>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Риски</p>
+      <h2>Что может пойти не так и что мы делаем</h2>
+    </div>
+    <div class="grid">
+      <div class="tile"><h3>Похожее решение от фирмы 1С</h3><p class="muted">Окно — примерно 1–2 года. Ставка на скорость, партнёрский канал и белорусскую локализацию.</p></div>
+      <div class="tile"><h3>Рост цены ИИ и курса</h3><p class="muted">Простые шаги на дешёвой модели, пакеты по предоплате, пересмотр цены в договоре.</p></div>
+      <div class="tile"><h3>Нетиповые базы клиентов</h3><p class="muted">Проверка базы до подключения и таблица соответствий счетов вместо жёсткой привязки.</p></div>
+      <div class="tile"><h3>Зависимость от внешних интерфейсов</h3><p class="muted">Модули опираются на внешние форматы и сервисы, которые могут меняться. Закладываем время на поддержку и обновления.</p></div>
+    </div>
+  </section>
+
+  <section id="plan" class="band-sky">
+    <div class="wrap section">
+      <div class="section-head">
+        <p class="eyebrow">Статус и план</p>
+        <h2>Где мы и куда идём</h2>
+      </div>
+      <div class="grid">
+        <div class="tile">
+          <p class="tag now">Сейчас</p>
+          <ul class="muted" style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px">
+            <li>ИИ-аналитик и распознавание документов сделаны и ждут пилотной проверки (1С:Бухгалтерия для Беларуси 2.1.65)</li>
+            <li>Обработка «Проверка совместимости» базы клиента</li>
+            <li>Банк в разработке</li>
+            <li>Поиск пилотных компаний</li>
+          </ul>
+        </div>
+        <div class="tile">
+          <p class="tag check">Ближайшие шаги</p>
+          <ol class="muted" style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px">
+            <li>Запуск пилота — ориентировочно ноябрь 2026</li>
+            <li>Пилот на 1С:Бухгалтерии для Беларуси в действующих компаниях</li>
+            <li>Первые платные клиенты — по подписке</li>
+          </ol>
+        </div>
+        <div class="tile">
+          <p class="tag next">Перспектива</p>
+          <ul class="muted" style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px">
+            <li>УТ и УНФ для Беларуси</li>
+            <li>Конфигурации для РФ</li>
+            <li>Партнёрство с франчайзи 1С</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -222,13 +250,12 @@
         <p class="eyebrow">Предложение</p>
         <h2>Ищем партнёра для следующего этапа</h2>
         <p class="lead muted">Хотим быстрее пройти путь от пилотов на Бухгалтерии до первых платных клиентов, а затем развивать продукт на УТ, УНФ и конфигурациях для РФ. Рассмотрим и инвестиции, и стратегическое партнёрство — с компанией из любой отрасли, которой интересен этот рынок. Формат и условия обсудим лично.</p>
-        <div class="actions"><a class="btn btn-amber" href="https://t.me/egorka_vin" target="_blank" rel="noopener">Написать в Telegram</a></div>
+        <div class="actions"><a class="btn btn-amber" href="/zayavka/">Обсудить участие</a><a class="btn btn-ghost" href="/kratko/">Коротко о проекте на одной странице</a></div>
       </div>
       <div class="contacts">
-        <p>Егор Виноградов, основатель</p>
-        <p><span>Telegram:</span> @egorka_vin</p>
+        <p>Индивидуальный предприниматель Виноградова Алёна Ивановна, УНП 291755674</p>
         <p><span>Телефон:</span> +375 29 508 02 10</p>
-        <p><span>E-mail:</span> egor.vin12345@gmail.com</p>
+        <p><span>E-mail:</span> info@ii-analitik.site</p>
       </div>
     </div>
   </section>
@@ -238,7 +265,7 @@
 <footer>
   <div class="wrap">
     <p>© 2026 ИИ-аналитик для 1С</p>
-    <p><a href="/">ИИ-аналитик</a> · <a href="/modules/">Модули 1С</a> · <a href="/investors/">Инвесторам</a> · <a href="https://t.me/ii_analitik_1c" target="_blank" rel="noopener">Канал в Telegram</a> · <a href="/cookies.html">Политика cookies</a></p>
+    <p><a href="/">ИИ-аналитик</a> · <a href="/modules/">Модули 1С</a> · <a href="/investors/">Инвесторам</a> · <a href="/partners/">Партнёрам</a> · <a href="/beta/">Бета-программа</a> · <a href="/kratko/">Коротко о проекте</a> · <a href="https://t.me/ii_analitik_1c" target="_blank" rel="noopener">Канал в Telegram</a> · <a href="/privacy/">Политика обработки данных</a> · <a href="/cookies.html">Политика cookies</a> · <a href="#" data-cookie-settings>Настройка cookies</a></p>
   </div>
 </footer>
 

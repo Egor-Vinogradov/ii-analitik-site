@@ -1,4 +1,4 @@
-/* Cookie notice, Yandex Metrika after consent, back-to-top arrow, redirect of old #/ links. */
+/* Cookie settings, Yandex Metrika after consent, back-to-top arrow, redirect of old #/ links. */
 (function () {
   var KEY = 'ii_cookie_choice';
   var COUNTER_ID = 113988808;
@@ -12,7 +12,7 @@
     return;
   }
 
-  /* ---- Yandex Metrika: loaded only after "Понятно" ---- */
+  /* ---- Yandex Metrika: loaded only after "Принять" ---- */
   function loadMetrika() {
     if (window.__iiMetrika) { return; }
     window.__iiMetrika = true;
@@ -25,27 +25,40 @@
     window.ym(COUNTER_ID, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: false });
   }
 
-  /* ---- cookie notice ---- */
+  /* ---- cookie notice: Метрика только после явного согласия; "Отклонить" равнозначна "Принять"; настройку можно открыть снова ---- */
+  function closeBar() {
+    var old = document.querySelector('.cookie-bar');
+    if (old) { old.parentNode.removeChild(old); }
+    document.body.classList.remove('has-cookie');
+  }
   function showBar() {
+    closeBar();
     var bar = document.createElement('div');
     bar.className = 'cookie-bar';
     bar.setAttribute('role', 'region');
-    bar.setAttribute('aria-label', 'Уведомление о cookies');
+    bar.setAttribute('aria-label', 'Настройка cookies');
     bar.innerHTML =
       '<div class="cookie-in">' +
-      '<p>Сайт использует cookies для статистики посещений. Подробнее — в <a href="/cookies.html">политике cookies</a>.</p>' +
-      '<div class="cookie-btns"><button type="button" class="cookie-yes">Понятно</button></div>' +
+      '<p>Для статистики посещений мы можем использовать «Яндекс Метрику» (аналитические cookies, данные получает Яндекс, РФ). Включим её только с вашего согласия. Подробнее — в <a href="/cookies.html">политике cookies</a> и <a href="/privacy/">политике обработки данных</a>.</p>' +
+      '<div class="cookie-btns"><button type="button" class="cookie-no">Отклонить</button><button type="button" class="cookie-yes">Принять</button></div>' +
       '</div>';
     document.body.appendChild(bar);
     document.body.classList.add('has-cookie');
     bar.querySelector('.cookie-yes').addEventListener('click', function () {
-      setChoice('yes');
-      bar.parentNode.removeChild(bar);
-      document.body.classList.remove('has-cookie');
-      loadMetrika();
+      setChoice('yes'); closeBar(); loadMetrika();
+    });
+    bar.querySelector('.cookie-no').addEventListener('click', function () {
+      var was = getChoice();
+      setChoice('no'); closeBar();
+      if (was === 'yes') { location.reload(); } // уже загруженный счётчик выгружаем перезагрузкой страницы
     });
   }
-  if (getChoice() === 'yes') { loadMetrika(); } else { showBar(); }
+  var ch = getChoice();
+  if (ch === 'yes') { loadMetrika(); } else if (ch !== 'no') { showBar(); }
+  document.addEventListener('click', function (e) {
+    var t = e.target && e.target.closest ? e.target.closest('[data-cookie-settings]') : null;
+    if (t) { e.preventDefault(); showBar(); }
+  });
 
   /* ---- back-to-top arrow ---- */
   var up = document.createElement('button');

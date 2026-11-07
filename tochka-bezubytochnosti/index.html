@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Точка безубыточности по данным бухгалтерии</title>
+<meta name="description" content="Расчёт точки безубыточности по данным 1С: маржинальный доход, постоянные расходы, выручка безубыточности и запас прочности за период и по месяцам.">
+<link rel="canonical" href="https://ii-analitik.site/tochka-bezubytochnosti/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="ИИ-аналитик для 1С">
+<meta property="og:title" content="Точка безубыточности по данным бухгалтерии">
+<meta property="og:description" content="Расчёт точки безубыточности по данным 1С: маржинальный доход, постоянные расходы, выручка безубыточности и запас прочности за период и по месяцам.">
+<meta property="og:url" content="https://ii-analitik.site/tochka-bezubytochnosti/">
+<meta property="og:image" content="https://ii-analitik.site/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Точка безубыточности по данным бухгалтерии","url":"https://ii-analitik.site/tochka-bezubytochnosti/","inLanguage":"ru","dateModified":"2026-11-06","isPartOf":{"@type":"WebSite","name":"ИИ-аналитик для 1С","url":"https://ii-analitik.site/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ИИ-аналитик для 1С","item":"https://ii-analitik.site/"},{"@type":"ListItem","position":2,"name":"Точка безубыточности по данным бухгалтерии","item":"https://ii-analitik.site/tochka-bezubytochnosti/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Можно увидеть безубыточность по месяцам?","acceptedAnswer":{"@type":"Answer","text":"Да. Расчёт доступен за период и по месяцам."}},{"@type":"Question","name":"Это отчётная форма или консультация?","acceptedAnswer":{"@type":"Answer","text":"Нет. Это расчёт по данным учёта; налоговых и юридических консультаций бот не даёт."}},{"@type":"Question","name":"Бот что-то меняет в моей базе 1С?","acceptedAnswer":{"@type":"Answer","text":"Нет. ИИ-аналитик только читает данные из 1С под отдельным пользователем с правами просмотра."}},{"@type":"Question","name":"С какими базами это работает?","acceptedAnswer":{"@type":"Answer","text":"Сейчас только с 1С:Бухгалтерией для Беларуси редакции 2.1. Совместимость вашей базы мы проверяем заранее обработкой «Проверка совместимости»."}}]}</script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <svg aria-hidden="true" width="30" height="30" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#1D2C4D"/><rect x="7" y="17" width="4" height="8" rx="1" fill="#E8A33D"/><rect x="14" y="12" width="4" height="13" rx="1" fill="#E8A33D"/><rect x="21" y="7" width="4" height="18" rx="1" fill="#F6F5F0"/></svg>
+      ИИ-аналитик для 1С
+    </a>
+    <nav class="tabs" aria-label="Разделы сайта">
+      <a href="/" data-tab="analyst">ИИ-аналитик</a>
+      <a href="/ii-v-1s-dlya-buhgaltera/" data-tab="accountant">Бухгалтерским компаниям</a>
+      <a href="/modules/" data-tab="modules">Модули 1С</a>
+      <a href="/uslugi-pod-zakaz/" data-tab="services">Услуги под заказ</a>
+      <a href="/investors/" data-tab="investors" class="tab-aside">Инвесторам</a>
+    </nav>
+    <div class="top-actions">
+      <a class="icon-link" href="https://t.me/ii_analitik_1c" target="_blank" rel="noopener" title="Telegram-канал проекта">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4 3 11l6 2.5L11 20l3-4.5 5 3.5z"/><path d="m9 13.5 9-7"/></svg>
+        <span>Канал в Telegram</span>
+      </a>
+      <a class="btn btn-amber" href="/zayavka/">Оставить заявку</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="view">
+  <section class="band-ink">
+    <div class="wrap section">
+      <div class="section-head">
+        <p class="eyebrow">Страница-ответ</p>
+        <h1>Точка безубыточности по данным бухгалтерии</h1>
+        <p class="lead muted">Коротко: точка безубыточности — это выручка, при которой фирма выходит в ноль. ИИ-аналитик определяет её по данным вашей 1С и показывает запас прочности в процентах.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Что делает бот</p>
+      <h2>Что показывает бот</h2>
+    </div>
+    <div class="grid">
+      <div class="tile"><h3>Маржинальный доход и его доля</h3><p class="muted">Сколько остаётся с продаж на покрытие постоянных расходов.</p></div>
+      <div class="tile"><h3>Постоянные расходы</h3><p class="muted">Управленческие и на реализацию.</p></div>
+      <div class="tile"><h3>Выручка безубыточности</h3><p class="muted">Выручка, с которой фирма не в минусе.</p></div>
+      <div class="tile"><h3>Запас прочности в %</h3><p class="muted">Насколько фактическая выручка выше точки безубыточности.</p></div>
+    </div>
+  </section>
+
+  <section class="band-sky">
+    <div class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">В Telegram</p>
+      <h2>Как спросить у бота</h2>
+    </div>
+      <div class="qa">
+        <div><p class="q">«Сколько надо продавать, чтобы не быть в минусе?»</p><p class="muted">Расчёт за период и по месяцам: маржинальный доход, постоянные расходы, выручка безубыточности и запас прочности.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Основание</p>
+      <h2>На чём основан расчёт</h2>
+    </div>
+      <ul class="muted" style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px">
+        <li>Цифры берутся из вашей 1С в момент вопроса.</li>
+        <li>Расчёт безубыточности сверяется с оборотно-сальдовой ведомостью 1С.</li>
+        <li>Цифры точны настолько, насколько точен учёт.</li>
+      </ul>
+    <div class="tile"><p class="tag now">Ждёт пилота</p><p class="muted">Расчёт точки безубыточности сделан для 1С:Бухгалтерии для Беларуси редакции 2.1 и ждёт пилотной проверки. Что сделано, что в разработке и что в планах — на странице <a href="/ii-v-1s-dlya-buhgaltera/">«ИИ в 1С для бухгалтера и бухгалтерской компании»</a>. Тексты справочные, не консультация.</p></div>
+  </section>
+
+  <section class="band-sky">
+    <div class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Вопросы и ответы</p>
+      <h2>Что обычно спрашивают</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Можно увидеть безубыточность по месяцам?</summary><p>Да. Расчёт доступен за период и по месяцам.</p></details>
+      <details><summary>Это отчётная форма или консультация?</summary><p>Нет. Это расчёт по данным учёта; налоговых и юридических консультаций бот не даёт.</p></details>
+      <details><summary>Бот что-то меняет в моей базе 1С?</summary><p>Нет. ИИ-аналитик только читает данные из 1С под отдельным пользователем с правами просмотра.</p></details>
+      <details><summary>С какими базами это работает?</summary><p>Сейчас только с 1С:Бухгалтерией для Беларуси редакции 2.1. Совместимость вашей базы мы проверяем заранее обработкой «Проверка совместимости».</p></details>
+    </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Читайте также</p>
+      <h2>Другие разборы</h2>
+    </div>
+    <div class="grid-2">
+      <a class="tile link-tile" href="/pochemu-upala-pribyl/"><h3>Почему упала прибыль: как найти причину по данным 1С</h3><p class="muted">прибыль меняется не «вообще», а из-за конкретных факторов — объёма и цены продаж, структуры продаж, себестоимости и расходов.</p></a>
+      <a class="tile link-tile" href="/pribyl-est-deneg-net/"><h3>Прибыль есть, а денег нет: как найти причину по данным 1С</h3><p class="muted">прибыль и деньги считаются по-разному, поэтому могут расходиться.</p></a>
+    </div>
+  </section>
+
+  <section class="band-ink">
+    <div class="wrap cta">
+      <div>
+        <h2>Обсудим пилот</h2>
+        <p class="lead muted">Оставьте заявку — расскажу, как это работает на вашей базе, проверим совместимость и запишем в пилот.</p>
+        <div class="actions"><a class="btn btn-amber" href="/zayavka/">Оставить заявку</a> <a class="btn btn-ghost" href="/">Вернуться на главную</a></div>
+      </div>
+      <div class="contacts">
+        <p>Индивидуальный предприниматель Виноградова Алёна Ивановна, УНП 291755674</p>
+        <p><span>Канал:</span> <a href="https://t.me/ii_analitik_1c" target="_blank" rel="noopener">@ii_analitik_1c</a></p>
+        <p><span>Телефон:</span> +375 29 508 02 10</p>
+        <p><span>E-mail:</span> info@ii-analitik.site</p>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 ИИ-аналитик для 1С</p>
+    <p><a href="/">ИИ-аналитик</a> · <a href="/modules/">Модули 1С</a> · <a href="/uslugi-pod-zakaz/">Услуги под заказ</a> · <a href="/investors/">Инвесторам</a> · <a href="/partners/">Партнёрам</a> · <a href="/beta/">Бета-программа</a> · <a href="/kratko/">Коротко о проекте</a> · <a href="https://t.me/ii_analitik_1c" target="_blank" rel="noopener">Канал в Telegram</a> · <a href="/privacy/">Политика обработки данных</a> · <a href="/cookies.html">Политика cookies</a> · <a href="#" data-cookie-settings>Настройка cookies</a></p>
+  </div>
+</footer>
+
+<script src="/site.js"></script>
+<script src="/chat-widget.js" defer></script>
+</body>
+</html>

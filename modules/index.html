@@ -3,26 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Модули 1С: распознавание документов, загрузка выписок, кассы РБ</title>
-<meta name="description" content="Модули для 1С в разработке: распознавание первичных документов, загрузка банковских выписок и интеграция 1С с программными кассами РБ. Набираем пилотные компании.">
+<title>Модули 1С: распознавание документов, загрузка выписок</title>
+<meta name="description" content="Модули для 1С: распознавание первичных документов (сделано, ждёт пилотной проверки), загрузка банковских выписок (в разработке). Набираем пилотные компании.">
 <link rel="canonical" href="https://ii-analitik.site/modules/">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="ИИ-аналитик для 1С">
-<meta property="og:title" content="Модули 1С — в разработке">
-<meta property="og:description" content="Распознавание первичных документов, загрузка банковских выписок и интеграция 1С с программными кассами РБ.">
+<meta property="og:title" content="Модули 1С: распознавание документов, банк">
+<meta property="og:description" content="Распознавание первичных документов и загрузка банковских выписок. Сейчас работаем с 1С:Бухгалтерией для Беларуси (редакция 2.1); УТ и УНФ — в планах, сроков не называем.">
 <meta property="og:url" content="https://ii-analitik.site/modules/">
 <meta property="og:image" content="https://ii-analitik.site/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Модули 1С: распознавание документов, загрузка выписок, кассы РБ", "url": "https://ii-analitik.site/modules/", "inLanguage": "ru", "description": "Модули для 1С в разработке: распознавание первичных документов, загрузка банковских выписок и интеграция 1С с программными кассами РБ. Набираем пилотные компании.", "isPartOf": {"@type": "WebSite", "name": "ИИ-аналитик для 1С", "url": "https://ii-analitik.site/"}, "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ИИ-аналитик для 1С", "item": "https://ii-analitik.site/"}, {"@type": "ListItem", "position": 2, "name": "Модули 1С", "item": "https://ii-analitik.site/modules/"}]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Модули 1С: распознавание документов, загрузка выписок", "url": "https://ii-analitik.site/modules/", "inLanguage": "ru", "description": "Модули для 1С: распознавание первичных документов (сделано, ждёт пилотной проверки), загрузка банковских выписок (в разработке). Набираем пилотные компании.", "isPartOf": {"@type": "WebSite", "name": "ИИ-аналитик для 1С", "url": "https://ii-analitik.site/"}, "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ИИ-аналитик для 1С", "item": "https://ii-analitik.site/"}, {"@type": "ListItem", "position": 2, "name": "Модули 1С", "item": "https://ii-analitik.site/modules/"}]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Это уже работает?","acceptedAnswer":{"@type":"Answer","text":"Распознавание документов сделано и ждёт пилотной проверки. Загрузка банковских выписок в разработке. Сроков мы не называем."}},{"@type":"Question","name":"Какие документы распознаёт модуль?","acceptedAnswer":{"@type":"Answer","text":"ТТН и ТН, акты выполненных работ (оказанных услуг). Банковские выписки — отдельный модуль «Банк»."}},{"@type":"Question","name":"Что происходит с данными?","acceptedAnswer":{"@type":"Answer","text":"Изображение документа в модель ИИ не отправляется: текст со скана читается на нашем сервере. Названия, УНП и ФИО заменяются кодами. Наименования товаров и услуг, суммы и даты передаются как есть, потому что по ним сверяется документ."}},{"@type":"Question","name":"Нужно ли менять нашу 1С?","acceptedAnswer":{"@type":"Answer","text":"Типовая конфигурация не меняется: устанавливается расширение, обновления ставятся как обычно. Базу перед подключением проверяет обработка «Проверка совместимости»."}},{"@type":"Question","name":"Можно взять только распознавание, без аналитика?","acceptedAnswer":{"@type":"Answer","text":"Да, части подключаются по отдельности. Бот один, в нём доступно то, что подключено."}},{"@type":"Question","name":"Сколько это стоит?","acceptedAnswer":{"@type":"Answer","text":"Зависит от числа пользователей, организаций и модулей. Назовём по заявке, пилот обсуждаем отдельно."}},{"@type":"Question","name":"С какой 1С это работает?","acceptedAnswer":{"@type":"Answer","text":"С 1С:Бухгалтерией для Беларуси редакции 2.1. Доработанную базу проверяем перед подключением, другие конфигурации в планах."}}]}</script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;600&amp;display=swap">
+<link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -35,7 +34,9 @@
     </a>
     <nav class="tabs" aria-label="Разделы сайта">
       <a href="/" data-tab="analyst">ИИ-аналитик</a>
+      <a href="/ii-v-1s-dlya-buhgaltera/" data-tab="accountant">Бухгалтерским компаниям</a>
       <a href="/modules/" data-tab="modules" aria-current="page">Модули 1С</a>
+      <a href="/uslugi-pod-zakaz/" data-tab="services">Услуги под заказ</a>
       <a href="/investors/" data-tab="investors" class="tab-aside">Инвесторам</a>
     </nav>
     <div class="top-actions">
@@ -43,7 +44,7 @@
         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4 3 11l6 2.5L11 20l3-4.5 5 3.5z"/><path d="m9 13.5 9-7"/></svg>
         <span>Канал в Telegram</span>
       </a>
-      <a class="btn btn-amber" href="https://t.me/egorka_vin" target="_blank" rel="noopener">Написать</a>
+      <a class="btn btn-amber" href="/zayavka/">Оставить заявку</a>
     </div>
   </div>
 </header>
@@ -54,40 +55,124 @@
     <div class="wrap section">
       <div class="section-head">
         <p class="eyebrow">Модули 1С</p>
-        <span class="dev-badge">В разработке</span>
-        <h1>Модули 1С: меньше ручного ввода для любой компании</h1>
-        <p class="lead muted">Три модуля, которые сокращают ручной ввод: распознавание первичных документов, загрузка банковских выписок и интеграция 1С с программными кассами РБ. Планируем для всех компаний на 1С, не только для аутсорса. Готовим к пилоту и набираем тех, кто хочет участвовать.</p>
+        <h1>Модули 1С: меньше ручного ввода в бухгалтерии</h1>
+        <p class="lead muted">Распознавание первичных документов и загрузка банковских выписок. Сейчас работаем с 1С:Бухгалтерией для Беларуси (редакция 2.1); УТ и УНФ — в планах, сроков не называем. Модули работают в Telegram-боте фирмы вместе с ИИ-аналитиком или отдельно от него: бухгалтер присылает документы, а руководитель в том же боте получает цифры из 1С. Типовая конфигурация 1С не меняется.</p>
+      </div>
+      <div class="actions"><a class="btn btn-amber" href="/zayavka/">Оставить заявку на пилот</a> <a class="btn btn-ghost" href="#how">Как работает распознавание</a></div>
+    </div>
+  </section>
+
+  <section id="problems" class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Зачем это нужно</p>
+      <h2>Куда уходит рабочий день бухгалтера</h2>
+    </div>
+    <div class="grid">
+      <div class="tile"><h3>Первичка вручную</h3><p class="muted">Накладные и акты приходят фото, сканом или PDF, и их набирают в 1С руками. Ошибки в суммах, номерах и контрагентах находят позже, при закрытии месяца.</p></div>
+      <div class="tile"><h3>Банковская выписка</h3><p class="muted">Платежи нужно связать с документами и контрагентами.</p></div>
+      <div class="tile"><h3>Много клиентов</h3><p class="muted">У бухгалтерии, которая ведёт много организаций, первички становится больше с каждым новым клиентом.</p></div>
+    </div>
+  </section>
+
+  <section id="products" class="band-sky">
+    <div class="wrap section">
+      <div class="section-head">
+        <p class="eyebrow">Модули</p>
+        <h2>Модули и их стадия</h2>
+        <p class="muted">«Ждёт пилота» — сделано, проверяем в пилоте. «В разработке» — делаем. Сроков не называем.</p>
       </div>
       <div class="shield">
         <div class="tile">
-          <p class="tag next">В разработке</p>
+          <p class="tag now">Ждёт пилота</p>
           <h3>Распознавание первичных документов</h3>
-          <p class="muted">Планируем полуавтомат: сервис распознаёт документ, а на пилоте в 1С всегда создаётся черновик. Бухгалтер проверяет и проводит сам.</p>
+          <p class="muted">ТТН, ТН и акты распознаём и проверяем на дубли и арифметику. Если в 1С всё внесено (организация, контрагент, договор, номенклатура), документ можем создавать и проводить автоматически; если чего-то не хватает — создаём непроведённым и называем, что именно. Режим уточняем с каждой компанией на пилоте; сроков и цен не называем.</p>
           <p class="fmt">Формат: подписка</p>
         </div>
         <div class="tile">
           <p class="tag next">В разработке</p>
           <h3>Загрузка банковских выписок</h3>
-          <p class="muted">Планируем загрузку выписок, создание документов в 1С и умную разноску платежей. Бухгалтер проверяет результат, а не набирает его вручную.</p>
+          <p class="muted">Загрузка выписки в 1С и разноска платежей по документам. Бухгалтер проверяет результат, а не набирает платежи вручную.</p>
           <p class="fmt">Формат: подписка</p>
         </div>
         <div class="tile">
-          <p class="tag next">В разработке</p>
-          <h3>Интеграция 1С с программными кассами РБ</h3>
-          <p class="muted">Готовим передачу данных программных касс в 1С. Планируем отдельный модуль на каждую кассу.</p>
-          <p class="fmt">Формат: отдельный модуль на каждую кассу</p>
+          <p class="tag check">Обсуждается</p>
+          <h3>Отдельные модули под вашу задачу</h3>
+          <p class="muted">Можем разработать и продать отдельный модуль. Условия обсуждаем индивидуально.</p>
+          <p class="fmt">Формат: по договорённости</p>
         </div>
       </div>
-      <p class="muted modules-note">Особенно полезно бухгалтерии, которая ведёт много клиентов и много первичных документов.</p>
-      <div class="actions"><a class="btn btn-amber" href="https://t.me/egorka_vin" target="_blank" rel="noopener">Участвовать в пилоте</a></div>
+    </div>
+  </section>
+
+  <section id="how" class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Как работает</p>
+      <h2>Распознавание документов: от фото до проверенного результата</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Присылаете документ</h3><p class="muted">Фото, скан или PDF — прямо в Telegram-бот фирмы.</p></li>
+      <li><h3>Читаем и обезличиваем</h3><p class="muted">Текст со скана читает программа на нашем сервере. Названия, УНП и ФИО заменяются кодами, и только такой текст получает модель ИИ.</p></li>
+      <li><h3>Раскладываем по полям</h3><p class="muted">Номер и дата, поставщик и покупатель, строки с количеством, ценой, суммой и НДС, итоги.</p></li>
+      <li><h3>Проверяем</h3><p class="muted">Сходится ли арифметика, не внесён ли документ раньше, есть ли такой контрагент по УНП. Если УНП не прочитан, бот спросит.</p></li>
+      <li><h3>Сообщаем результат</h3><p class="muted">Бухгалтер видит, что распознано и что не сошлось. Как документ попадает в 1С на пилоте, согласуем с каждой организацией.</p></li>
+    </ol>
+    <div class="table-box">
+      <table>
+        <thead><tr><th>Документ</th><th>Что делаем</th></tr></thead>
+        <tbody>
+          <tr><td>ТТН и ТН</td><td>Распознаём, проверяем на дубли и арифметику</td></tr>
+          <tr><td>Акты выполненных работ (оказанных услуг)</td><td>Распознаём, проверяем на дубли и арифметику</td></tr>
+          <tr><td>Счета</td><td>Распознаём, проверяем и, если в 1С всё внесено, создаём и проводим документ автоматически</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="security" class="band-sky">
+    <div class="wrap section">
+      <div class="section-head">
+        <p class="eyebrow">Безопасность</p>
+        <h2>Что происходит с вашими данными</h2>
+      </div>
+      <div class="grid">
+        <div class="tile"><h3>Картинка не уходит в модель ИИ</h3><p class="muted">Текст со скана читается на нашем сервере. В модель попадает только текст.</p></div>
+        <div class="tile"><h3>Названия заменяются кодами</h3><p class="muted">Контрагенты, УНП и ФИО обезличиваются. Наименования товаров и услуг, суммы и даты передаются как есть: по ним сверяется документ.</p></div>
+        <div class="tile"><h3>Сервер в Беларуси, модель ИИ в России</h3><p class="muted">Бот работает на нашем сервере в Республике Беларусь. Языковая модель — у поставщика в Российской Федерации; в неё уходит только обезличенный текст.</p></div>
+        <div class="tile"><h3>Типовая 1С остаётся типовой</h3><p class="muted">Устанавливается расширение, обновления конфигурации ставятся как обычно.</p></div>
+        <div class="tile"><h3>Только по желанию клиента</h3><p class="muted">Модуль включается, если вы его выбрали. ИИ-аналитик по-прежнему только читает данные.</p></div>
+      </div>
     </div>
   </section>
 
   <section id="terms" class="wrap section">
     <div class="section-head">
-      <p class="eyebrow">Условия</p>
-      <h2>Как подключить модули</h2>
-      <p class="muted">Распознавание документов и загрузка выписок — по подписке. Интеграция с программной кассой — отдельным модулем: на каждую кассу свой. Условия пилота обсуждаем с каждой компанией индивидуально.</p>
+      <p class="eyebrow">Как подключить</p>
+      <h2>Четыре шага до пилота</h2>
+      <p class="muted">Распознавание документов и загрузка выписок — по подписке. Модули подключаются по отдельности. Можем разработать и продать отдельный модуль под вашу задачу — условия обсуждаем. Условия пилота обсуждаем с каждой компанией индивидуально.</p>
+    </div>
+    <ol class="steps">
+      <li><h3>Знакомимся</h3><p class="muted">Узнаём, какие документы и в каком объёме вы обрабатываете.</p></li>
+      <li><h3>Проверяем базу</h3><p class="muted">Запускаем обработку «Проверка совместимости» на вашей базе 1С.</p></li>
+      <li><h3>Пилот</h3><p class="muted">Вы пользуетесь модулем и даёте обратную связь, мы дорабатываем.</p></li>
+      <li><h3>Итоги</h3><p class="muted">Смотрим результат и решаем, как работать дальше.</p></li>
+    </ol>
+  </section>
+
+  <section id="faq" class="band-sky">
+    <div class="wrap section">
+      <div class="section-head">
+        <p class="eyebrow">Вопросы и ответы</p>
+        <h2>Что обычно спрашивают</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Это уже работает?</summary><p>Распознавание документов сделано и ждёт пилотной проверки. Загрузка банковских выписок в разработке. Сроков мы не называем.</p></details>
+        <details><summary>Какие документы распознаёт модуль?</summary><p>ТТН и ТН, акты выполненных работ (оказанных услуг). Банковские выписки — отдельный модуль «Банк».</p></details>
+        <details><summary>Что происходит с данными?</summary><p>Изображение документа в модель ИИ не отправляется: текст со скана читается на нашем сервере. Названия, УНП и ФИО заменяются кодами. Наименования товаров и услуг, суммы и даты передаются как есть, потому что по ним сверяется документ.</p></details>
+        <details><summary>Нужно ли менять нашу 1С?</summary><p>Типовая конфигурация не меняется: устанавливается расширение, обновления ставятся как обычно. Базу перед подключением проверяет обработка «Проверка совместимости».</p></details>
+        <details><summary>Можно взять только распознавание, без аналитика?</summary><p>Да, части подключаются по отдельности. Бот один, в нём доступно то, что подключено.</p></details>
+        <details><summary>Сколько это стоит?</summary><p>Зависит от числа пользователей, организаций и модулей. Назовём по заявке, пилот обсуждаем отдельно.</p></details>
+        <details><summary>С какой 1С это работает?</summary><p>С 1С:Бухгалтерией для Беларуси редакции 2.1. Доработанную базу проверяем перед подключением, другие конфигурации в планах.</p></details>
+      </div>
     </div>
   </section>
 
@@ -95,14 +180,14 @@
     <div class="wrap cta">
       <div>
         <h2>Обсудим пилот</h2>
-        <p class="lead muted">Напишите в Telegram — расскажу подробнее, какие модули подойдут вашей компании.</p>
-        <div class="actions"><a class="btn btn-amber" href="https://t.me/egorka_vin" target="_blank" rel="noopener">Написать в Telegram</a></div>
+        <p class="lead muted">Оставьте заявку — расскажу подробнее, какие модули подойдут вашей компании.</p>
+        <div class="actions"><a class="btn btn-amber" href="/zayavka/">Оставить заявку</a></div>
       </div>
       <div class="contacts">
-        <p>Егор Виноградов</p>
-        <p><span>Telegram:</span> @egorka_vin</p>
+        <p>Индивидуальный предприниматель Виноградова Алёна Ивановна, УНП 291755674</p>
+        <p><span>Канал:</span> <a href="https://t.me/ii_analitik_1c" target="_blank" rel="noopener">@ii_analitik_1c</a></p>
         <p><span>Телефон:</span> +375 29 508 02 10</p>
-        <p><span>E-mail:</span> egor.vin12345@gmail.com</p>
+        <p><span>E-mail:</span> info@ii-analitik.site</p>
       </div>
     </div>
   </section>
@@ -112,7 +197,7 @@
 <footer>
   <div class="wrap">
     <p>© 2026 ИИ-аналитик для 1С</p>
-    <p><a href="/">ИИ-аналитик</a> · <a href="/modules/">Модули 1С</a> · <a href="/investors/">Инвесторам</a> · <a href="https://t.me/ii_analitik_1c" target="_blank" rel="noopener">Канал в Telegram</a> · <a href="/cookies.html">Политика cookies</a></p>
+    <p><a href="/">ИИ-аналитик</a> · <a href="/modules/">Модули 1С</a> · <a href="/uslugi-pod-zakaz/">Услуги под заказ</a> · <a href="/investors/">Инвесторам</a> · <a href="/partners/">Партнёрам</a> · <a href="/beta/">Бета-программа</a> · <a href="/kratko/">Коротко о проекте</a> · <a href="https://t.me/ii_analitik_1c" target="_blank" rel="noopener">Канал в Telegram</a> · <a href="/privacy/">Политика обработки данных</a> · <a href="/cookies.html">Политика cookies</a> · <a href="#" data-cookie-settings>Настройка cookies</a></p>
   </div>
 </footer>
 

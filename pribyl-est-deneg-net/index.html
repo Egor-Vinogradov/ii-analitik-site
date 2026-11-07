@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Прибыль есть, а денег нет: как найти причину по данным 1С</title>
+<meta name="description" content="Почему при прибыли не хватает денег: поступления от покупателей, платежи поставщикам, зарплата, налоги и кредиты. ИИ-аналитик показывает движение денег по данным 1С.">
+<link rel="canonical" href="https://ii-analitik.site/pribyl-est-deneg-net/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="ИИ-аналитик для 1С">
+<meta property="og:title" content="Прибыль есть, а денег нет: как найти причину по данным 1С">
+<meta property="og:description" content="Почему при прибыли не хватает денег: поступления от покупателей, платежи поставщикам, зарплата, налоги и кредиты. ИИ-аналитик показывает движение денег по данным 1С.">
+<meta property="og:url" content="https://ii-analitik.site/pribyl-est-deneg-net/">
+<meta property="og:image" content="https://ii-analitik.site/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Прибыль есть, а денег нет: как найти причину по данным 1С","url":"https://ii-analitik.site/pribyl-est-deneg-net/","inLanguage":"ru","dateModified":"2026-11-06","isPartOf":{"@type":"WebSite","name":"ИИ-аналитик для 1С","url":"https://ii-analitik.site/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ИИ-аналитик для 1С","item":"https://ii-analitik.site/"},{"@type":"ListItem","position":2,"name":"Прибыль есть, а денег нет: как найти причину по данным 1С","item":"https://ii-analitik.site/pribyl-est-deneg-net/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Бот покажет, куда ушли деньги?","acceptedAnswer":{"@type":"Answer","text":"Да, по видам платежей и по статьям затрат: это две отдельные справки."}},{"@type":"Question","name":"Нужно ли выгружать данные из 1С?","acceptedAnswer":{"@type":"Answer","text":"Нет. Бот берёт цифры из вашей 1С в момент вопроса, вручную ничего выгружать не нужно."}},{"@type":"Question","name":"Бот что-то меняет в моей базе 1С?","acceptedAnswer":{"@type":"Answer","text":"Нет. ИИ-аналитик только читает данные из 1С под отдельным пользователем с правами просмотра."}},{"@type":"Question","name":"С какими базами это работает?","acceptedAnswer":{"@type":"Answer","text":"Сейчас только с 1С:Бухгалтерией для Беларуси редакции 2.1. Совместимость вашей базы мы проверяем заранее обработкой «Проверка совместимости»."}}]}</script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <svg aria-hidden="true" width="30" height="30" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#1D2C4D"/><rect x="7" y="17" width="4" height="8" rx="1" fill="#E8A33D"/><rect x="14" y="12" width="4" height="13" rx="1" fill="#E8A33D"/><rect x="21" y="7" width="4" height="18" rx="1" fill="#F6F5F0"/></svg>
+      ИИ-аналитик для 1С
+    </a>
+    <nav class="tabs" aria-label="Разделы сайта">
+      <a href="/" data-tab="analyst">ИИ-аналитик</a>
+      <a href="/ii-v-1s-dlya-buhgaltera/" data-tab="accountant">Бухгалтерским компаниям</a>
+      <a href="/modules/" data-tab="modules">Модули 1С</a>
+      <a href="/uslugi-pod-zakaz/" data-tab="services">Услуги под заказ</a>
+      <a href="/investors/" data-tab="investors" class="tab-aside">Инвесторам</a>
+    </nav>
+    <div class="top-actions">
+      <a class="icon-link" href="https://t.me/ii_analitik_1c" target="_blank" rel="noopener" title="Telegram-канал проекта">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4 3 11l6 2.5L11 20l3-4.5 5 3.5z"/><path d="m9 13.5 9-7"/></svg>
+        <span>Канал в Telegram</span>
+      </a>
+      <a class="btn btn-amber" href="/zayavka/">Оставить заявку</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="view">
+  <section class="band-ink">
+    <div class="wrap section">
+      <div class="section-head">
+        <p class="eyebrow">Страница-ответ</p>
+        <h1>Прибыль есть, а денег нет: как найти причину по данным 1С</h1>
+        <p class="lead muted">Коротко: прибыль и деньги считаются по-разному, поэтому могут расходиться. Чтобы найти причину, нужно увидеть, откуда деньги пришли и куда ушли. ИИ-аналитик показывает движение денег по видам и ставит операционный поток рядом с прибылью.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <p class="muted" style="max-width: 70ch">Прибыль считается по начисленным доходам и расходам: отгрузили — выручка есть, даже если покупатель ещё не заплатил. Деньги — это фактические поступления и платежи. Поэтому на разницу могут влиять долги покупателей, товары на складе, платежи по кредитам и налоги.</p>
+    <div class="section-head">
+      <p class="eyebrow">Что делает бот</p>
+      <h2>Что показывает бот</h2>
+    </div>
+    <div class="grid">
+      <div class="tile"><h3>Поступления</h3><p class="muted">От покупателей и по другим видам поступлений.</p></div>
+      <div class="tile"><h3>Платежи</h3><p class="muted">Поставщикам, зарплата, налоги, кредиты, инвестиции.</p></div>
+      <div class="tile"><h3>Поток против прибыли</h3><p class="muted">Операционный поток денег рядом с прибылью: видно, где «застряла» прибыль.</p></div>
+    </div>
+  </section>
+
+  <section class="band-sky">
+    <div class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">В Telegram</p>
+      <h2>Как спросить у бота</h2>
+    </div>
+      <div class="qa">
+        <div><p class="q">«Прибыль есть, а денег нет — почему?»</p><p class="muted">Бот показывает поступления и платежи по видам и сопоставляет операционный поток с прибылью. Совет — отдельным блоком «Моё мнение (решение за вами)».</p></div>
+        <div><p class="q">«На что ушли деньги в сентябре?»</p><p class="muted">Расходы по статьям затрат, без внутренних переносов.</p></div>
+        <div><p class="q">«Кто нам должен?» и «Что лежит на складе?»</p><p class="muted">Долги покупателей и запасы — частые причины расхождения прибыли и денег. Это отдельные справки бота.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Основание</p>
+      <h2>На чём основан расчёт</h2>
+    </div>
+      <ul class="muted" style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px">
+        <li>Цифры берутся из вашей 1С в момент вопроса.</li>
+        <li>Движение денег сверяется с «Анализом счёта 51» в 1С.</li>
+        <li>Цифры точны настолько, насколько точен учёт.</li>
+      </ul>
+    <div class="tile"><p class="tag now">Ждёт пилота</p><p class="muted">Анализ движения денег сделан для 1С:Бухгалтерии для Беларуси редакции 2.1 и ждёт пилотной проверки. Что сделано, что в разработке и что в планах — на странице <a href="/ii-v-1s-dlya-buhgaltera/">«ИИ в 1С для бухгалтера и бухгалтерской компании»</a>. Тексты справочные, не консультация.</p></div>
+  </section>
+
+  <section class="band-sky">
+    <div class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Вопросы и ответы</p>
+      <h2>Что обычно спрашивают</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Бот покажет, куда ушли деньги?</summary><p>Да, по видам платежей и по статьям затрат: это две отдельные справки.</p></details>
+      <details><summary>Нужно ли выгружать данные из 1С?</summary><p>Нет. Бот берёт цифры из вашей 1С в момент вопроса, вручную ничего выгружать не нужно.</p></details>
+      <details><summary>Бот что-то меняет в моей базе 1С?</summary><p>Нет. ИИ-аналитик только читает данные из 1С под отдельным пользователем с правами просмотра.</p></details>
+      <details><summary>С какими базами это работает?</summary><p>Сейчас только с 1С:Бухгалтерией для Беларуси редакции 2.1. Совместимость вашей базы мы проверяем заранее обработкой «Проверка совместимости».</p></details>
+    </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <div class="section-head">
+      <p class="eyebrow">Читайте также</p>
+      <h2>Другие разборы</h2>
+    </div>
+    <div class="grid-2">
+      <a class="tile link-tile" href="/davnie-dolgi-pokupateley/"><h3>Как найти давние долги покупателей в 1С</h3><p class="muted">ИИ-аналитик показывает долги, не оплаченные больше 30 дней: с какой даты долг не закрыт, когда были последняя отгрузка и последняя оплата.</p></a>
+      <a class="tile link-tile" href="/hvatit-li-deneg-na-zarplatu-i-nalogi/"><h3>Хватит ли денег на зарплату и налоги: как оценить по данным 1С</h3><p class="muted">ИИ-аналитик оценивает, на сколько месяцев хватит денег, исходя из среднего месячного оттока, и сопоставляет ожидаемые поступления от долгов покупателей с ближайшими платежами.</p></a>
+    </div>
+  </section>
+
+  <section class="band-ink">
+    <div class="wrap cta">
+      <div>
+        <h2>Обсудим пилот</h2>
+        <p class="lead muted">Оставьте заявку — расскажу, как это работает на вашей базе, проверим совместимость и запишем в пилот.</p>
+        <div class="actions"><a class="btn btn-amber" href="/zayavka/">Оставить заявку</a> <a class="btn btn-ghost" href="/">Вернуться на главную</a></div>
+      </div>
+      <div class="contacts">
+        <p>Индивидуальный предприниматель Виноградова Алёна Ивановна, УНП 291755674</p>
+        <p><span>Канал:</span> <a href="https://t.me/ii_analitik_1c" target="_blank" rel="noopener">@ii_analitik_1c</a></p>
+        <p><span>Телефон:</span> +375 29 508 02 10</p>
+        <p><span>E-mail:</span> info@ii-analitik.site</p>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 ИИ-аналитик для 1С</p>
+    <p><a href="/">ИИ-аналитик</a> · <a href="/modules/">Модули 1С</a> · <a href="/uslugi-pod-zakaz/">Услуги под заказ</a> · <a href="/investors/">Инвесторам</a> · <a href="/partners/">Партнёрам</a> · <a href="/beta/">Бета-программа</a> · <a href="/kratko/">Коротко о проекте</a> · <a href="https://t.me/ii_analitik_1c" target="_blank" rel="noopener">Канал в Telegram</a> · <a href="/privacy/">Политика обработки данных</a> · <a href="/cookies.html">Политика cookies</a> · <a href="#" data-cookie-settings>Настройка cookies</a></p>
+  </div>
+</footer>
+
+<script src="/site.js"></script>
+<script src="/chat-widget.js" defer></script>
+</body>
+</html>
