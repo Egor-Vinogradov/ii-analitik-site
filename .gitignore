@@ -7,3 +7,7 @@ oferta.html
 _backup-before-spa/
 _backup-before-seo/
 tools/
+
+*.bak
+*.bak-*
+*.bak*
