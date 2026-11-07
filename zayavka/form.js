@@ -3,7 +3,7 @@
   'use strict';
 
   /* === ПАРАМЕТРЫ ПОДКЛЮЧЕНИЯ ===================================== */
-  var ENDPOINT = '';      // адрес приёма заявок (webhook n8n), например https://bot.ii-analitik.site/webhook/... — см. docs\artifacts\site-forma-zayavki-spec.md
+  var ENDPOINT = '/zayavka/send.php';  // приём заявок на хостинге: письмо на info@ii-analitik.site
   var CALENDAR_URL = '';  // ссылка на календарь записи на демо; пусто — блок «Запись на демо» скрыт
   /* ================================================================ */
 
