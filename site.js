@@ -12,6 +12,26 @@
     return;
   }
 
+  /* Keep contact channels here; Max is shown as a plain-text option only (not a working channel); add a link after the Max bot is verified. */
+  var CONTACT_CHANNELS = [
+    { label: 'Связаться быстрее', href: 'https://t.me/egorka_vin' }
+  ];
+  var contactTargets = document.querySelectorAll('[data-contact-channels]');
+  Array.prototype.forEach.call(contactTargets, function (target) {
+    CONTACT_CHANNELS.forEach(function (channel, index) {
+      if (index) { target.appendChild(document.createTextNode(' · ')); }
+      var link = document.createElement('a');
+      link.href = channel.href;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.textContent = channel.label;
+      target.appendChild(link);
+    });
+    var maxNote = document.createElement('span');
+    maxNote.textContent = ' · Max — подключим по запросу (сейчас не подключён)';
+    target.appendChild(maxNote);
+  });
+
   /* ---- Yandex Metrika: loaded only after "Принять" ---- */
   function loadMetrika() {
     if (window.__iiMetrika) { return; }

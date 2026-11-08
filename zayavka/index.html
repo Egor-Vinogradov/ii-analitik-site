@@ -36,7 +36,6 @@
       <a href="/" data-tab="analyst">ИИ-аналитик</a>
       <a href="/ii-v-1s-dlya-buhgaltera/" data-tab="accountant">Бухгалтерским компаниям</a>
       <a href="/modules/" data-tab="modules">Модули 1С</a>
-      <a href="/uslugi-pod-zakaz/" data-tab="services">Услуги под заказ</a>
       <a href="/investors/" data-tab="investors" class="tab-aside">Инвесторам</a>
     </nav>
     <div class="top-actions">
@@ -65,11 +64,11 @@
     <form class="lead-form" id="lead-form" novalidate>
       <div class="row2"><label><span class="lbl">Имя <i aria-hidden="true">*</i></span><input type="text" name="name" autocomplete="name" maxlength="120" required></label>
       <label><span class="lbl">Компания</span><input type="text" name="company" autocomplete="organization" maxlength="160"></label></div>
-      <label><span class="lbl">Telegram или телефон <i aria-hidden="true">*</i></span><input type="text" name="contact" maxlength="120" required placeholder="@имя или +375…"></label>
-      <label><span class="lbl">Что вас интересует</span><select name="interest"><option value="pilot">Пилот на моей базе 1С</option><option value="bank">Модуль «Банк» (в разработке)</option><option value="recognition">Распознавание документов (ждёт пилота)</option><option value="partner">Партнёрство (франчайзи, аутсорсер)</option><option value="own-contour">Установка в моём контуре (по запросу)</option><option value="other">Другое</option></select></label>
+      <label><span class="lbl">Контакт для связи <i aria-hidden="true">*</i></span><input type="text" name="contact" maxlength="120" required placeholder="Телефон, мессенджер или e-mail"></label>
+      <label><span class="lbl">Что вас интересует</span><select name="interest"><option value="pilot">Пилот на моей базе 1С</option><option value="bank">Модуль «Банк» (в разработке)</option><option value="recognition">Распознавание документов (в разработке)</option><option value="partner">Партнёрство (франчайзи, аутсорсер)</option><option value="own-contour">Установка в моём контуре (по запросу)</option><option value="other">Другое</option></select></label>
       <label><span class="lbl">Коротко о задаче</span><textarea name="message" rows="4" maxlength="1000"></textarea></label>
       <p class="muted form-warn">Не отправляйте пароли, доступы к базе и выгрузки 1С. Сайт не предназначен для лиц младше 16 лет.</p>
-      <label class="check"><input type="checkbox" name="consent" id="consent" required> <span>Даю согласие на обработку указанных данных для связи со мной по этой заявке (данные хранятся 30 дней). <a href="/privacy/" target="_blank" rel="noopener">Политика обработки данных</a></span></label>
+      <label class="check"><input type="checkbox" name="consent" id="consent" required> <span>Даю согласие на обработку указанных данных для связи со мной по этой заявке. <a href="/privacy/" target="_blank" rel="noopener">Политика обработки данных</a></span></label>
       <div class="hp" aria-hidden="true"><label>Сайт<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
       <div class="actions"><button type="submit" class="btn btn-ink" id="lead-send">Отправить заявку</button> <a class="btn btn-ink" href="mailto:info@ii-analitik.site%0A%0A%E2%80%94%20%E2%80%94%20%E2%80%94%0A%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0%3A%20%2Fzayavka%2F">Написать на e-mail</a></div>
       <p class="form-status" id="lead-status" role="status" aria-live="polite"></p>
