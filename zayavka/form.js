@@ -31,7 +31,7 @@
     if (f.website && f.website.value) { say('Спасибо, заявка получена.'); form.reset(); return; } // ловушка для ботов: тихо «успех», ничего не шлём
     var name = f.name.value.trim();
     var contact = f.contact.value.trim();
-    if (!name || !contact) { say('Укажите имя и Telegram или телефон.', true); return; }
+    if (!name || !contact) { say('Укажите имя и контакт для связи.', true); return; }
     if (!f.consent.checked) { say('Без отметки согласия заявку отправить нельзя. Можно написать на info@ii-analitik.site.', true); return; }
     if (!ENDPOINT) { say('Приём заявок через форму ещё не подключён. Напишите нам на info@ii-analitik.site.', true); return; }
 

@@ -12,9 +12,9 @@
     return;
   }
 
-  /* Keep contact channels here; Max is shown as a plain-text option only (not a working channel); add a link after the Max bot is verified. */
+  /* Keep contact channels here; the Max entry can be enabled after its bot is verified. */
   var CONTACT_CHANNELS = [
-    { label: 'Связаться быстрее', href: 'https://t.me/egorka_vin' }
+    { label: 'Telegram — можно связаться быстрее', href: 'https://t.me/egorka_vin' }
   ];
   var contactTargets = document.querySelectorAll('[data-contact-channels]');
   Array.prototype.forEach.call(contactTargets, function (target) {
@@ -27,9 +27,6 @@
       link.textContent = channel.label;
       target.appendChild(link);
     });
-    var maxNote = document.createElement('span');
-    maxNote.textContent = ' · Max — подключим по запросу (сейчас не подключён)';
-    target.appendChild(maxNote);
   });
 
   /* ---- Yandex Metrika: loaded only after "Принять" ---- */
